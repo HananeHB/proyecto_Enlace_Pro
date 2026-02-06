@@ -16,6 +16,10 @@ import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.domain.model.id.Al
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.infraestructure.mapper.AlumnoMapper;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.infraestructure.web.dto.alumno.AlumnoRequest;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.infraestructure.web.dto.alumno.AlumnoResponse;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
@@ -36,7 +40,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-
+@Tag(name = "Alumnado", description = "Operaciones relacionadas con la gestión del alumnado")
 @RestController
 @RequestMapping("/alumnos")
 @RequiredArgsConstructor
@@ -56,9 +60,15 @@ public class AlumnoController {
     @Value("${api.version}")
     private String apiVersion;
 
+    @Operation(summary = "Obtiene el listado de alumnado", description = "Busca en la base de datos todo el alumnado y sus detalles")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Listado del alumnado generado"),
+            @ApiResponse(responseCode = "404", description = "No hay alumnos en la base de datos")
+    })
+
     @GetMapping
     public List<AlumnoResponse> allAlumnos() {
-        if("1.0".equals(apiVersion)) {
+        if ("1.0".equals(apiVersion)) {
             return findAlumnoService.findAll()
                     .stream()
                     .map(AlumnoMapper::toResponse)
@@ -81,7 +91,7 @@ public class AlumnoController {
         return AlumnoMapper.toResponse(alumno);
     }
 
-    @ResponseStatus(HttpStatus.BAD_REQUEST) 
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handlerValidationException(MethodArgumentNotValidException ex) {
         Map<String, String> errors = new HashMap<>();
@@ -92,5 +102,5 @@ public class AlumnoController {
         });
         return errors;
     }
-    
+
 }
