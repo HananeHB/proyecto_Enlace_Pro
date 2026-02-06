@@ -1,7 +1,0 @@
-| Endpoint | Petición HTTP | Body | Response Code | Response Body | Posibles Errores |
-|---|---|---|---|---|---|
-| /padres | GET | N/A | 200 (OK) | **{ "padres": {"id_padre": 12345678, "nombre": "Laura", "apellidos": "Duarte Lopez","email": "laura.duarte@gmail.com", "telefono": "+34 987 654 321, "id_alumno": 1}, {"id_padre": 87654321, "nombre": "Pablo", "apellidos": "López Gimenez", "email": "pablo.lopez@gmail.com", "telefono": "+34 623 143 567", "id_alumno": 2}}** | PadreNotFoundException| 
-| /padres | POST | **{ "nombre": "Pablo", "apellidos": "López Gimenez",  "email": "pablo.lopez@gmail.com", "telefono": "+34 623 143 567", "id_alumno": "3"}**  | 201 (Created) | **{ "id_padre": 12367854, "nombre": "Pablo", "apellidos": "López Gimenez","email": "pablo.lopez@gmail.com", "telefono": "+34 623 143 567", "id_alumno": 3}** | 400 (Solicitud incorrecta)| 
-| /padres/{id_padre} | GET | N/A | 200 (OK) | **{ "id_padre": 12345678, "nombre": "Laura", "apellidos": "Duarte Lopez", "email": "laura.duarte@gmail.com", "telefono": "+34 987 654 321, "id_alumno": 1}** | 404 (No encontrado)| 
-| /padres/{id_padre} | PUT | **{ "nombre": "Juan", "apellidos": "Fernandez Perez", "email": "juan.fernandez@gmail.com", "telefono": "+34 123 456 789", "id_alumno": 2}**| 200 (OK) | **{ "id_padre": 12367854, "nombre": "Juan", "apellidos": "Fernandez Perez","email": "juan.fernandez@gmail.com", "telefono": "+34 123 456 789", "id_alumno": 3}** | 400 (Solicitud incorrecta), 404 (No encontrado)| 
-| /padres/{id_padre} | DELETE | N/A | 204 (No Content) | N/A | 404 (No encontrado) | 
