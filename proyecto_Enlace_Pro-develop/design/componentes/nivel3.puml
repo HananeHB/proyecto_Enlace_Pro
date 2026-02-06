@@ -1,0 +1,52 @@
+@startuml hola
+skinparam PackageStyle rectangle
+!pragma layout smetana
+package alumnos{
+
+    component infraestructure{
+        
+        component config
+        component db{
+            component jpa{
+                component entity
+                component repository
+            }
+        }
+        component mapper
+        component web{
+            component dto
+            component rest 
+            component validation
+        }
+    }
+package application{
+    component service 
+    component command 
+    component usecase
+}
+package domain{
+    component error 
+    component model 
+    component repository as respositoryDomain
+}
+}
+
+package common{
+    component domain as domainCoomon{
+        component error as errorCommon
+        component model as modelCommon
+        component repository as respositoryCommon{
+        }
+    }
+    component infraestructure  as infraestructureCommon{
+        component web as webCommon{
+            component error as errorInfraestructureCommon
+        }
+    }
+    
+}
+alumnos ..> common :use
+infraestructure ..>  application:use
+application ..> domain :use
+
+@enduml 

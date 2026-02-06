@@ -1,0 +1,7 @@
+| Endpoint | Petición HTTP | Body | Response Code | Response Body | Posibles Errores |
+|---|---|---|---|---|---|
+| /profesores | GET | N/A | 200 (OK) | **{ "profesores": {"id_prof": 1, "nombre": "Clara", "apellidos": "López Gimenez", "email": "clara.duarte@gmail.com", "telefono": "+34 987 654 321} , {"id_prof": 2, "nombre": "Pablo", "apellidos": "López Gimenez", "email": "pablo.lopez@gmail.com", "telefono": "+34 623 143 567"}}** | ProfesorNotFoundException | 
+| /profesores | POST | **{ "nombre": "Pablo", "apellidos": "López Gimenez", "email": "pablo.lopez@gmail.com", "telefono": "+34 623 143 567"}**  | 201 (Created) | **{ "id_prof": 2, "nombre": "Pablo", "apellidos": "López Gimenez", "email": "pablo.lopez@gmail.com", "telefono": "+34 623 143 567"}** | 400 (Solicitud incorrecta)| 
+| /profesores/{id_prof} | GET | N/A | 200 (OK) | **{ "id_prof": 1, "nombre": "Clara", "apellidos": "López Gimenez", "email": "laura.duarte@gmail.com", "telefono": "+34 987 654 321}** | 404 (No encontrado)| 
+| /profesores/{id_prof} | PUT | **{ "nombre": "Juan", "apellidos": "López Gimenez", "email": "juan.fernandez@gmail.com", "telefono": "+34 123 456 789"}**| 200 (OK) | **{ "id_prof": 3, "nombre": "Juan", "apellidos": "López Gimenez","email": "juan.fernandez@gmail.com", "telefono": "+34 123 456 789"}** | 400 (Solicitud incorrecta), 404 (No encontrado)| 
+| /profesores/{id_prof} | DELETE | N/A | 204 (No Content) | N/A | 404 (No encontrado) | 

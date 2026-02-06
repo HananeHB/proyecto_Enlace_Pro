@@ -1,0 +1,26 @@
+@startuml siagrama_de_contenedores
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+' -- Actores --'
+Person(rol_administrador, "Administrador", "Persona encargada de gestionar y mantener el sistema")
+Person(rol_usuario, "Usuario", "Cliente registrado en el sistema")
+
+' --Sistemas central --'
+System_Boundary(c1, "EnlacePro App"){
+    System(cliente, "Aplicación Web", "Springboot,Thymeleaf")
+    Container(servidor, "Servicios Rest", "Spring Boot")
+}
+
+'--Sistemas externos--'
+SystemDb_Ext(database, "H2","Base de datos en memoria  con los alumnos e idiomas")
+
+' --Rlaciones-- '
+Rel(rol_administrador, cliente, "usa el navegador", "https")
+Rel(rol_usuario, cliente, "usa el navegador", "https")
+Rel(cliente, servidor, "peticiones al API", "Json/Https")
+Rel(servidor , database, "Operaciones de lectura y escritura", "jdbc/H2 protocol")
+
+'--Leyenda--'
+SHOW_LEGEND()
+
+@enduml 
