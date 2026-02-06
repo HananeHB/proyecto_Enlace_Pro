@@ -1,0 +1,61 @@
+@startuml nivel 4
+' Muestra la estructura de paquetes/componentes de infraestructura y domain
+' Para destacar las interfaces importantes '
+package alumnos{
+left to right direction
+    package domain{
+        component error 
+        component model {
+            () IdiomaId
+            () AlumnoId
+        }
+        component repository as respositoryDomain{
+            () "IdiomaRepository" as idiomaRepository
+            () "AlumnoRepository" as alumnoRepository
+        }
+    }
+    package infraestructure{
+            component mapper
+            component web
+            component config
+
+            package "db/jpa"{
+                
+                component repository{
+                    () AlumnoEntityJpaRepository
+                    () IdiomaEntityJpaRepository
+                }
+                component entity
+                component "AlumnoJpaRepositoryImpl.java" as AlumnoJpaRepositoryImpl
+                component "IdiomaJpaRepositoryImpl.java" as IdiomaJpaRepositoryImpl
+                
+            }
+        }
+    }
+
+    package common{
+        component domain as domainCoomon{
+            component error as errorCommon
+            component model as modelCommon{
+                () Identificador
+            }
+            component repository as respositoryCommon{
+                () "CRUDRepository"
+            }
+        }
+        
+        package "infraestructure/web"{
+            component error as errorInfraestructureCommon
+        }
+        
+    }
+    "CRUDRepository" <|-up- idiomaRepository
+    "CRUDRepository" <|-up- alumnoRepository
+    Identificador <|-right- IdiomaId
+    Identificador <|-right- AlumnoId
+
+    AlumnoJpaRepositoryImpl ..|> alumnoRepository
+    IdiomaJpaRepositoryImpl ..|> idiomaRepository
+
+
+@enduml 

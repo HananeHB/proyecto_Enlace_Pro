@@ -1,0 +1,23 @@
+@startuml diagrama_contexto
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+' -- Actores --'
+Person(rol_administrador, "Administrador", "Persona encargada de gestionar y mantener el sistema")
+Person(rol_usuario, "Usuario", "Cliente registrado en el sistema")
+
+' --Sistemas central --'
+System(systemAlias, "EnlacePro", "Plataforma central de gestión y adaptación lingüística para Aulas de Enlace")
+
+'--Sistemas externos--'
+SystemDb_Ext(database, "H2","Base de datos en memoria  con los alumnos e idiomas")
+
+' --Rlaciones-- '
+Rel(rol_administrador, systemAlias, "geestiona", "crear, modificar, eliminar y listar usuarios e idiomas")
+Rel(rol_usuario, systemAlias, "utiliza", "ver, buscar,gestionar contenidos y niveles")
+
+Rel(systemAlias , database, "Almacena y recupera")
+
+'--Leyenda--'
+SHOW_LEGEND()
+
+@enduml
