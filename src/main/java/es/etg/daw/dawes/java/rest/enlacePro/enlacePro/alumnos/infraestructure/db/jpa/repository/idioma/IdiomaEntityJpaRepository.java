@@ -7,5 +7,5 @@ import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.infraestructure.db
 
 @Repository
 public interface IdiomaEntityJpaRepository extends JpaRepository<IdiomaEntity, Integer>{
-    
+    boolean existsByNombreIgnoreCase(String nombre);
 } 

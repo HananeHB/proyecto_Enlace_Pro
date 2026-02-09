@@ -37,7 +37,15 @@ public class IdiomaController {
     private final FindIdiomaService findIdiomaService;
     
     @PostMapping
-    public ResponseEntity<IdiomaResponse> createIdioma(@Valid @RequestBody IdiomaRequest idiomaRequest) {
+    public ResponseEntity<?> createIdioma(@Valid @RequestBody IdiomaRequest idiomaRequest) {
+        String nombre =idiomaRequest.nombre();
+
+        //verifica si ya existe
+        if (createIdiomaService.idiomaExiste(nombre)) {
+            Map<String,String>error=new HashMap<>();
+            error.put("nombre", "El idioma '" + nombre + "' ya está registrado");
+            return  ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+        }
         CreateIdiomaCommand comando = IdiomaMapper.toCommand(idiomaRequest);
         Idioma idioma = createIdiomaService.createIdioma(comando);
         return ResponseEntity.status(HttpStatus.CREATED).body(IdiomaMapper.toResponse(idioma));

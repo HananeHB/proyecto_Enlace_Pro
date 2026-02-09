@@ -17,4 +17,8 @@ public class CreateIdiomaService {
         Idioma idioma = createIdiomaUseCase.create(command);
         return idioma;
     }
+
+    public boolean idiomaExiste(String nombre){
+        return createIdiomaUseCase.existsByNombre(nombre);
+    }
 }
