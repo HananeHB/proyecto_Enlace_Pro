@@ -10,6 +10,6 @@ public class DeleteAlumnoUseCase {
     private final AlumnoRepository alumnoRepository;
 
     public void delete(AlumnoId id) {
-        alumnoRepository.deteteById(id);
+        alumnoRepository.deleteById(id);
     }
 }

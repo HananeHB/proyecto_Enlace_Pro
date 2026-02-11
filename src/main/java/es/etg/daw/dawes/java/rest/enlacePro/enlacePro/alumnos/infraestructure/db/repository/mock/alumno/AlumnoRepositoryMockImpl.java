@@ -49,7 +49,7 @@ public class AlumnoRepositoryMockImpl implements AlumnoRepository{
     }
 
     @Override
-    public void deteteById(AlumnoId id) {
+    public void deleteById(AlumnoId id) {
         alumnos.remove(id);
     }
 

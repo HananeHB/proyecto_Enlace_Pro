@@ -50,7 +50,7 @@ public class IdiomaRepositoryMockImpl  implements IdiomaRepository{
     }
 
     @Override
-    public void deteteById(IdiomaId id) {
+    public void deleteById(IdiomaId id) {
         idiomas.remove(id);
     }
     

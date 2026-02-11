@@ -61,7 +61,7 @@ public class IdiomaControllerIT {
     @Test
     void deleteById() {
         int idEsperado = 1;
-        repository.deteteById(new IdiomaId(idEsperado));
+        repository.deleteById(new IdiomaId(idEsperado));
         var idioma = repository.getById(new IdiomaId(idEsperado));
 
         assertAll(

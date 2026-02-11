@@ -41,7 +41,7 @@ public class IdiomaJpaRepositoryImpl implements IdiomaRepository {
     }
 
     @Override
-    public void deteteById(IdiomaId id) {
+    public void deleteById(IdiomaId id) {
         repository.deleteById(id.getValue());
     }
 
