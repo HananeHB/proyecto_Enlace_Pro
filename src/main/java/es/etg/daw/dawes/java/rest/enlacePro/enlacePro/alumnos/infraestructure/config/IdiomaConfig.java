@@ -5,12 +5,12 @@ import org.springframework.context.annotation.Configuration;
 
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.service.idioma.CreateIdiomaService;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.service.idioma.DeleteIdiomaService;
+import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.service.idioma.EditIdiomaService;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.service.idioma.FindIdiomaService;
-import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.service.idioma.UpdateIdiomaService;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.usecase.idioma.CreateIdiomaUseCase;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.usecase.idioma.DeleteIdiomaUseCase;
+import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.usecase.idioma.EditIdiomaUseCase;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.usecase.idioma.FindIdiomaUseCase;
-import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.usecase.idioma.UpdateIdiomaUseCase;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.domain.repository.IdiomaRepository;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.infraestructure.db.jpa.repository.idioma.IdiomaEntityJpaRepository;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.infraestructure.db.jpa.repository.idioma.IdiomaJpaRepositoryImpl;
@@ -59,12 +59,12 @@ public class IdiomaConfig {
     }
 
     @Bean 
-    public UpdateIdiomaUseCase updateIdiomaUseCase(){
-        return new UpdateIdiomaUseCase(idiomaRepository());
+    public EditIdiomaUseCase editIdiomaUseCase(){
+        return new EditIdiomaUseCase(idiomaRepository());
     }
 
     @Bean
-    public UpdateIdiomaService updateIdiomaService(){
-        return new UpdateIdiomaService(updateIdiomaUseCase());
+    public EditIdiomaService editIdiomaService(){
+        return new EditIdiomaService(editIdiomaUseCase());
     }
 }

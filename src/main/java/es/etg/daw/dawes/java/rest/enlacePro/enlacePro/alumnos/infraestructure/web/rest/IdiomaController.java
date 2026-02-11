@@ -22,11 +22,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.command.idioma.CreateIdiomaCommand;
-import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.command.idioma.UpdateIdiomaCommand;
+import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.command.idioma.EditIdiomaCommand;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.service.idioma.CreateIdiomaService;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.service.idioma.DeleteIdiomaService;
+import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.service.idioma.EditIdiomaService;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.service.idioma.FindIdiomaService;
-import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.service.idioma.UpdateIdiomaService;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.domain.model.Idioma;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.domain.model.id.IdiomaId;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.infraestructure.mapper.IdiomaMapper;
@@ -43,7 +43,7 @@ public class IdiomaController {
     private final CreateIdiomaService createIdiomaService;
     private final FindIdiomaService findIdiomaService;
     private final DeleteIdiomaService deleteIdiomaService;
-    private final UpdateIdiomaService updateIdiomaService;
+    private final EditIdiomaService updateIdiomaService;
     
     @PostMapping
     public ResponseEntity<?> createIdioma(@Valid @RequestBody IdiomaRequest idiomaRequest) {
@@ -76,22 +76,21 @@ public class IdiomaController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteIdioma(@PathVariable Integer id){
-        IdiomaId idiomaId = new IdiomaId(id);
+    public ResponseEntity<?> deleteIdioma(@PathVariable Integer id){
         //verificar si el idioma existe antes de elimianr
-        if(findIdiomaService.findById(idiomaId).isEmpty()){
+        if(findIdiomaService.findById((new IdiomaId(id))).isEmpty()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
-        deleteIdiomaService.deleteIdioma(idiomaId);
-        return ResponseEntity.noContent().build();//devuelve 204 no Content
+        deleteIdiomaService.deleteIdioma(new IdiomaId(id));
+        return ResponseEntity.noContent().build();//devuelve 204 no Content(respuesta vacía)
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<IdiomaResponse> actualizar(@PathVariable Integer id, 
                                             @Valid @RequestBody IdiomaRequest request){
         IdiomaId idiomaId=new IdiomaId(id);
-        UpdateIdiomaCommand command = new UpdateIdiomaCommand(idiomaId, request.nombre());
-        Idioma actualizado = updateIdiomaService.updateIdioma(command);
+        EditIdiomaCommand command = new EditIdiomaCommand(idiomaId, request.nombre());
+        Idioma actualizado = updateIdiomaService.update(command);
         return ResponseEntity.ok(IdiomaMapper.toResponse(actualizado));
     }
     
