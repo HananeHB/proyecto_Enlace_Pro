@@ -43,7 +43,7 @@ public class IdiomaController {
     private final CreateIdiomaService createIdiomaService;
     private final FindIdiomaService findIdiomaService;
     private final DeleteIdiomaService deleteIdiomaService;
-    private final EditIdiomaService updateIdiomaService;
+    private final EditIdiomaService editIdiomaService;
     
     @PostMapping
     public ResponseEntity<?> createIdioma(@Valid @RequestBody IdiomaRequest idiomaRequest) {
@@ -86,12 +86,10 @@ public class IdiomaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<IdiomaResponse> actualizar(@PathVariable Integer id, 
-                                            @Valid @RequestBody IdiomaRequest request){
-        IdiomaId idiomaId=new IdiomaId(id);
-        EditIdiomaCommand command = new EditIdiomaCommand(idiomaId, request.nombre());
-        Idioma actualizado = updateIdiomaService.update(command);
-        return ResponseEntity.ok(IdiomaMapper.toResponse(actualizado));
+    public IdiomaResponse editIdioma(@PathVariable Integer id, @RequestBody IdiomaRequest request){
+        EditIdiomaCommand command =IdiomaMapper.toCommand(new IdiomaId(id), request);
+        Idioma actualizado = editIdiomaService.update(command);
+        return IdiomaMapper.toResponse(actualizado);
     }
     
     @ResponseStatus(HttpStatus.BAD_REQUEST) 

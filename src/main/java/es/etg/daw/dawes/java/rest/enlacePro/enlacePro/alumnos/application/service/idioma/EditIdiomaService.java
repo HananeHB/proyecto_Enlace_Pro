@@ -10,9 +10,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Service
 public class EditIdiomaService {
-    private final EditIdiomaUseCase updateIdiomaUseCase;
+    private final EditIdiomaUseCase editIdiomaUseCase;
+    
     public Idioma update(EditIdiomaCommand command){
-        Idioma idioma= updateIdiomaUseCase.update(command);
+        Idioma idioma= editIdiomaUseCase.update(command);
         return idioma;
 
     }
