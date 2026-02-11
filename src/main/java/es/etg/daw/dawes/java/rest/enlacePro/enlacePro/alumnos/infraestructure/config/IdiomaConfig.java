@@ -4,8 +4,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.service.idioma.CreateIdiomaService;
+import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.service.idioma.DeleteIdiomaService;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.service.idioma.FindIdiomaService;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.usecase.idioma.CreateIdiomaUseCase;
+import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.usecase.idioma.DeleteIdiomaUseCase;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.usecase.idioma.FindIdiomaUseCase;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.domain.repository.IdiomaRepository;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.infraestructure.db.jpa.repository.idioma.IdiomaEntityJpaRepository;
@@ -43,4 +45,14 @@ public class IdiomaConfig {
     public FindIdiomaService findIdiomaService(){
         return new FindIdiomaService(findIdiomaUseCase());
     }   
+
+    @Bean 
+    public DeleteIdiomaUseCase deleteIdiomaUseCase(){
+        return new DeleteIdiomaUseCase(idiomaRepository());
+    }
+
+    @Bean
+    public DeleteIdiomaService deleteIdiomaService(){
+        return new DeleteIdiomaService(deleteIdiomaUseCase());
+    }
 }

@@ -61,7 +61,7 @@ public class AlumnoControllerIT {
     @Test
     void deleteById() {
         int idEsperado = 1;
-        repository.deteteById(new AlumnoId(idEsperado));
+        repository.deleteById(new AlumnoId(idEsperado));
         var alumno = repository.getById(new AlumnoId(idEsperado));
 
         assertAll(

@@ -3,13 +3,12 @@ package es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.infraestructure.d
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.domain.repository.AlumnoRepository;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.domain.model.Alumno;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.domain.model.id.AlumnoId;
+import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.domain.repository.AlumnoRepository;
 
 public class AlumnoRepositoryMockImplTest {
     
@@ -59,7 +58,7 @@ public class AlumnoRepositoryMockImplTest {
     @Test
     void deleteById() {
         int idEsperado = 1;
-        repository.deteteById(new AlumnoId(idEsperado));
+        repository.deleteById(new AlumnoId(idEsperado));
         var alumno = repository.getById(new AlumnoId(idEsperado));
 
         assertAll(

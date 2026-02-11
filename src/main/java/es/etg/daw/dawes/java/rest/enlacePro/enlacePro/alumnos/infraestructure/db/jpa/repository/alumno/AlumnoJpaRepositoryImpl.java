@@ -42,7 +42,7 @@ public class AlumnoJpaRepositoryImpl implements AlumnoRepository {
     }
 
     @Override
-    public void deteteById(AlumnoId id) {
+    public void deleteById(AlumnoId id) {
         repository.deleteById(id.getValue());
     }
 
