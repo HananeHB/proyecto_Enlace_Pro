@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -21,9 +22,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.command.idioma.CreateIdiomaCommand;
+import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.command.idioma.UpdateIdiomaCommand;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.service.idioma.CreateIdiomaService;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.service.idioma.DeleteIdiomaService;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.service.idioma.FindIdiomaService;
+import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.service.idioma.UpdateIdiomaService;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.domain.model.Idioma;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.domain.model.id.IdiomaId;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.infraestructure.mapper.IdiomaMapper;
@@ -40,6 +43,7 @@ public class IdiomaController {
     private final CreateIdiomaService createIdiomaService;
     private final FindIdiomaService findIdiomaService;
     private final DeleteIdiomaService deleteIdiomaService;
+    private final UpdateIdiomaService updateIdiomaService;
     
     @PostMapping
     public ResponseEntity<?> createIdioma(@Valid @RequestBody IdiomaRequest idiomaRequest) {
@@ -81,6 +85,16 @@ public class IdiomaController {
         deleteIdiomaService.deleteIdioma(idiomaId);
         return ResponseEntity.noContent().build();//devuelve 204 no Content
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<IdiomaResponse> actualizar(@PathVariable Integer id, 
+                                            @Valid @RequestBody IdiomaRequest request){
+        IdiomaId idiomaId=new IdiomaId(id);
+        UpdateIdiomaCommand command = new UpdateIdiomaCommand(idiomaId, request.nombre());
+        Idioma actualizado = updateIdiomaService.updateIdioma(command);
+        return ResponseEntity.ok(IdiomaMapper.toResponse(actualizado));
+    }
+    
     @ResponseStatus(HttpStatus.BAD_REQUEST) 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handlerValidationException(MethodArgumentNotValidException ex) {

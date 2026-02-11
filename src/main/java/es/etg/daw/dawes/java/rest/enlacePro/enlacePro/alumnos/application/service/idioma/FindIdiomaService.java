@@ -3,12 +3,15 @@ package es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.servi
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.usecase.idioma.FindIdiomaUseCase;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.domain.model.Idioma;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.domain.model.id.IdiomaId;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
+@Service
 public class FindIdiomaService {
     private final FindIdiomaUseCase findIdiomaUseCase;
 
