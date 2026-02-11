@@ -8,7 +8,7 @@ import lombok.experimental.Accessors;
 @Getter
 @AllArgsConstructor
 @Accessors(fluent = true)
-public class UpdateIdiomaCommand {
+public class EditIdiomaCommand {
     private final IdiomaId id;
     private final String nombre;//solo se permite actualizar el nombre
 }
