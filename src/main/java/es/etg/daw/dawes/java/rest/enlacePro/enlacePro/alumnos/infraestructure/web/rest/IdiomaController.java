@@ -71,7 +71,7 @@ public class IdiomaController {
         }
     }
 
-    @DeleteMapping("{/id")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteIdioma(@PathVariable Integer id){
         IdiomaId idiomaId = new IdiomaId(id);
         //verificar si el idioma existe antes de elimianr
