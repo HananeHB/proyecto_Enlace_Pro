@@ -12,3 +12,7 @@ JWT
 - en infraestructure 
   - web
     -dto --> request (de email y contraseña) y response (devuelve token)
+    - controlador de login que recibe email y password y devuelve un JWT si son correctos
+  -security 
+    - Agregar JwtFilter que intercepta peticiones, valida el token JWT y carga el usuario con su rol en el SecurityContext
+ 
