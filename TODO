@@ -8,3 +8,7 @@ JWT
 
 - en appliction 
   - clase AuthService que valida la contraseña y devuelve JWT si la contraseña es correcta
+
+- en infraestructure 
+  - web
+    -dto --> request (de email y contraseña) y response (devuelve token)
