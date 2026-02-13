@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.auth.application.AuthService;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.auth.infraestructure.web.dto.LoginRequest;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.auth.infraestructure.web.dto.LoginResponse;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import org.springframework.web.bind.annotation.RequestBody;
 import lombok.RequiredArgsConstructor;
 
 @RestController

@@ -1,7 +1,6 @@
 package es.etg.daw.dawes.java.rest.enlacePro.enlacePro.auth.infraestructure.security;
 
 import java.io.IOException;
-import java.util.Collection;
 import java.util.Collections;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
