@@ -4,7 +4,7 @@ import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.common.domain.model.Identi
 
 public class UsuarioId extends Identificador{
 
-    protected UsuarioId(Integer value) {
+    public UsuarioId(Integer value) {
         super(value);
     }
 }
