@@ -2,3 +2,9 @@ JWT
 - Se ha agregado las dependencias 
 - en el common se agrega PasswordEncoder para hash de contraseñas para el tocken (en common/infraestructure/security)
  
+- en Infraenstructure 
+  - JwtUtil: generar una clave segura aleatoria en memoria asi se usa para firmay y validar los JWT La única limitación: 
+  si reinicias la aplicación, esta clave cambia y todos los tokens generados antes ya no serán válidos(al ser h2)
+
+- en appliction 
+  - clase AuthService que valida la contraseña y devuelve JWT si la contraseña es correcta
