@@ -43,32 +43,29 @@ public class SecurityConfig {
         return username -> UserMapper.toAuth(UserMapper.toDomain(repository.findByEmail(username)));
     }
 
-    // @Bean
-    // public PasswordEncoder passwordEncoder() {
-    //     return new BCryptPasswordEncoder();
-    // }
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
     }
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    // ESTE ES JWT
+    // @Bean
+    // public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-        http.csrf(csrf -> csrf.disable()) //desactivar CSRF porque usmaos JWT
-            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))//no usamos sesión(JWT es stateless)
-            //configuración de permisos por endpoint
-            .authorizeHttpRequests(requests -> requests
-                        .requestMatchers("/auth/login").permitAll()
-                        .requestMatchers(idiomasEndpoint).hasRole(Rol.ADMIN.name())
-                        .requestMatchers(alumnosEndpoint).hasAnyRole(Rol.ADMIN.name())
-                        .anyRequest().authenticated()
-            )      
-            //anadir el filtro JWT antes del filtro de Spring
-            .addFilterBefore(new JwtFilter(), UsernamePasswordAuthenticationFilter.class);             
-        return http.build();
-    }
+    //     http.csrf(csrf -> csrf.disable()) //desactivar CSRF porque usmaos JWT
+    //         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))//no usamos sesión(JWT es stateless)
+    //         //configuración de permisos por endpoint
+    //         .authorizeHttpRequests(requests -> requests
+    //                     .requestMatchers("/auth/login").permitAll()
+    //                     .requestMatchers(idiomasEndpoint).hasRole(Rol.ADMIN.name())
+    //                     .requestMatchers(alumnosEndpoint).hasAnyRole(Rol.ADMIN.name())
+    //                     .anyRequest().authenticated()
+    //         )      
+    //         //anadir el filtro JWT antes del filtro de Spring
+    //         .addFilterBefore(new JwtFilter(), UsernamePasswordAuthenticationFilter.class);             
+    //     return http.build();
+    // }
 
 
     /**
@@ -89,30 +86,30 @@ public class SecurityConfig {
     /**
      * ESTO ES PARA DESACTIVAR EL ANTERIOR BEAN 
      */
-    // @Bean
-    // public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-    //     http.csrf(csrf -> csrf.disable()) // Desactiva CSRF
-    //             .authorizeHttpRequests(auth -> auth
-    //                     .anyRequest().permitAll() // Permite todas las peticiones
-    //             )
-    //             .formLogin(form -> form.disable()) // Desactiva login
-    //             .httpBasic(basic -> basic.disable()); // Desactiva basic auth
+        http.csrf(csrf -> csrf.disable()) //Desactiva CSRF
+                .authorizeHttpRequests(auth -> auth
+                        .anyRequest().permitAll() //Permite todas las peticiones
+                )
+                .formLogin(form -> form.disable()) //Desactiva login
+                .httpBasic(basic -> basic.disable()); //Desactiva basic auth
 
-    //     return http.build();
-    // }
+        return http.build();
+    }
 
-    // @Bean
-    // public CorsConfigurationSource corsConfigurationSource() {
-    //     CorsConfiguration configuration = new CorsConfiguration();
-    //     configuration.setAllowedOriginPatterns(Arrays.asList("*"));
-    //     configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-    //     configuration.setAllowedHeaders(Arrays.asList("*"));
-    //     configuration.setAllowCredentials(true);
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOriginPatterns(Arrays.asList("*"));
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        configuration.setAllowedHeaders(Arrays.asList("*"));
+        configuration.setAllowCredentials(true);
 
-    //     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-    //     source.registerCorsConfiguration("/**", configuration);
-    //     return source;
-    // }
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
 
 }
