@@ -1,0 +1,4 @@
+JWT
+- Se ha agregado las dependencias 
+- en el common se agrega PasswordEncoder para hash de contraseñas para el tocken (en common/infraestructure/security)
+ 
