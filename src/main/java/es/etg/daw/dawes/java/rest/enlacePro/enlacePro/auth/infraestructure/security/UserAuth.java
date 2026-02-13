@@ -20,18 +20,18 @@ import lombok.NoArgsConstructor;
 public class UserAuth implements UserDetails{
     
     private Integer id;
-    private String nombre;
+    private String name;
     private String email;
     private String password;
-    private Rol rol;
+    private Rol role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        var authorities = rol.getPermisos()
+        var authorities = role.getPermisos()
                 .stream()
                 .map(permission -> new SimpleGrantedAuthority(permission.getPermiso()))
                 .collect(Collectors.toList());
-        authorities.add(new SimpleGrantedAuthority("ROLE_" + rol.name()));
+        authorities.add(new SimpleGrantedAuthority("ROLE_" + role.name()));
         return authorities;
     }
     @Override

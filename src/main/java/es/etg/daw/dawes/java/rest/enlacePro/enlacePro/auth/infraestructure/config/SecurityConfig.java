@@ -15,9 +15,8 @@ import lombok.RequiredArgsConstructor;
 @Configuration
 @RequiredArgsConstructor
 public class SecurityConfig {
-    
-    private final UserEntityRepository repository;
 
+    private final UserEntityRepository repository;
 
     @Bean
     public UserDetailsService userDetailsService() {
@@ -29,7 +28,6 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();

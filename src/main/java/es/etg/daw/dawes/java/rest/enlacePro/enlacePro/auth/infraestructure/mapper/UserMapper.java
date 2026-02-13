@@ -8,14 +8,14 @@ import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.auth.infraestructure.secur
 public class UserMapper {
     
     public static Usuario toDomain(UserEntity user){
-        Usuario usuario = new Usuario(new UsuarioId(user.getId()), user.getNombre(), user.getApellidos(),
-                            user.getEmail(), user.getPassword(), user.getRol());
+        Usuario usuario = new Usuario(new UsuarioId(user.getId()), user.getFirstname(), user.getLastname(),
+                            user.getEmail(), user.getPassword(), user.getRole());
         return usuario;
     }
 
     public static UserAuth toAuth(Usuario usuario){
         UserAuth user = new UserAuth(usuario.getId().getValue(), usuario.getNombre(), 
-                                usuario.getEmail(), usuario.getPassword(), usuario.getRol());
+                                usuario.getMail(), usuario.getPassword(), usuario.getRol());
         return user;
     }
 }

@@ -3,7 +3,6 @@ package es.etg.daw.dawes.java.rest.enlacePro.enlacePro.auth.domain;
 import lombok.Getter;
 
 public enum Permiso {
-
     ADMIN_CREATE("admin:create"),
     ADMIN_READ("admin:read"),
     ADMIN_UPDATE("admin:update"),
@@ -12,7 +11,7 @@ public enum Permiso {
     USER_CREATE("user:create"),
     USER_READ("user:read"),
     USER_UPDATE("user:update"),
-    USER_DELETE("user:delete");
+    USER_DELETE("user:delete");  
 
     @Getter
     private final String permiso;
