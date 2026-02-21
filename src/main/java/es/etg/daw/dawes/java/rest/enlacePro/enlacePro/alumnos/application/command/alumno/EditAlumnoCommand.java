@@ -1,6 +1,8 @@
 package es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.command.alumno;
 
+import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.domain.model.Idioma;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.domain.model.id.AlumnoId;
+import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.domain.model.id.IdiomaId;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,4 +18,5 @@ public class EditAlumnoCommand {
     private String apellidos;
     private String email;
     private String numeroTelefono;
+    private IdiomaId idiomaId;
 }

@@ -18,6 +18,7 @@ public class EditarAlumnoUseCase {
                     a.setApellidos(command.apellidos());
                     a.setEmail(command.email());
                     a.setNumeroTelefono(command.numeroTelefono());
+                    a.setIdiomaId(command.idiomaId());
                     return alumnoRepository.save(a);})
                 .orElseThrow(() -> new AlumnoNotFoundException(command.id().getValue()));
     }

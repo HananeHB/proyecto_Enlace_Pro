@@ -31,7 +31,7 @@ public class AlumnoMapper {
     }
 
     public static EditAlumnoCommand toCommand(int id, AlumnoRequest alumnoRequest) {
-        return new EditAlumnoCommand(new AlumnoId(id), alumnoRequest.nombre(), alumnoRequest.apellido(), alumnoRequest.email(), alumnoRequest.numeroTelefono());
+        return new EditAlumnoCommand(new AlumnoId(id), alumnoRequest.nombre(), alumnoRequest.apellido(), alumnoRequest.email(), alumnoRequest.numeroTelefono(), new IdiomaId(alumnoRequest.idioma()));
     }
 
     public static AlumnoEntity toEntity(Alumno a) {
