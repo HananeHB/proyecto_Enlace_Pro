@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   mi-api-rest:
-    image: nuhaila/enlace_pro:v1
+    image: nuhaila/enlace_pro:v2
     container_name: enlace_pro-container
     ports:
       - "8080:8080"
