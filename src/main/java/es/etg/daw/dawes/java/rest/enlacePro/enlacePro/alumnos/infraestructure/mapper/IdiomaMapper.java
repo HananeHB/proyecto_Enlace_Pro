@@ -8,13 +8,15 @@ import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.comman
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.application.command.idioma.EditIdiomaCommand;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.domain.model.Idioma;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.domain.model.id.IdiomaId;
+import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.infraestructure.db.jpa.entity.AlumnoEntity;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.infraestructure.db.jpa.entity.IdiomaEntity;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.infraestructure.web.dto.idioma.IdiomaRequest;
 import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.infraestructure.web.dto.idioma.IdiomaResponse;
 
 public class IdiomaMapper {
-    
-    public static CreateIdiomaCommand toCommand(es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.infraestructure.web.dto.idioma.IdiomaRequest idiomaRequest) {
+
+    public static CreateIdiomaCommand toCommand(
+            es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.infraestructure.web.dto.idioma.IdiomaRequest idiomaRequest) {
         return new CreateIdiomaCommand(idiomaRequest.nombre());
     }
 
@@ -25,18 +27,33 @@ public class IdiomaMapper {
     }
 
     public static IdiomaEntity toEntity(Idioma i) {
-
-        IdiomaId id = i.getId();
-        return IdiomaEntity.builder().id(id != null ? id.getValue() : null)
+        // 1. Mapeamos los campos básicos
+        IdiomaEntity entity = IdiomaEntity.builder()
+                .id(i.getId() != null ? i.getId().getValue() : null)
                 .nombre(i.getNombre())
-                .fechaCreacion(LocalDateTime.now())
+                .fechaCreacion(i.getFechaCreacion() != null ? i.getFechaCreacion() : LocalDateTime.now())
                 .build();
+
+        // 2. Mapeamos la lista de alumnos (complicándonos un poco)
+        if (i.getAlumnos() != null) {
+            List<AlumnoEntity> alumnosEntities = i.getAlumnos().stream()
+                    .map(alumnoDominio -> AlumnoMapper.toEntity(alumnoDominio)) // Necesitas este mapper
+                    .toList();
+
+            // 3. ¡IMPORTANTE! Mantener la consistencia bidireccional
+            // Usamos el método addAlumno que tienes en tu entidad para que el AlumnoEntity
+            // sepa quién es su IdiomaEntity (el famoso .setIdioma(this))
+            alumnosEntities.forEach(entity::addAlumno);
+        }
+
+        return entity;
     }
 
     public static Idioma toDomain(IdiomaEntity i) {
         return Idioma.builder().id(new IdiomaId(i.getId()))
                 .nombre(i.getNombre())
                 .fechaCreacion(LocalDateTime.now())
+                .alumnos(i.getAlumnos() != null ? AlumnoMapper.toDomain(i.getAlumnos()) : new ArrayList<>())
                 .build();
     }
 
@@ -48,7 +65,7 @@ public class IdiomaMapper {
         return i;
     }
 
-    public static EditIdiomaCommand toCommand(IdiomaId id, IdiomaRequest idiomaRequest){
-        return new EditIdiomaCommand(id, idiomaRequest.nombre());
+    public static EditIdiomaCommand toCommand(int id, IdiomaRequest idiomaRequest) {
+        return new EditIdiomaCommand(new IdiomaId(id), idiomaRequest.nombre());
     }
 }

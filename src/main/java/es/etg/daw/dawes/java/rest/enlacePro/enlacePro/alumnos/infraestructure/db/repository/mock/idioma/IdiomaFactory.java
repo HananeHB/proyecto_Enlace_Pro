@@ -13,12 +13,12 @@ public class IdiomaFactory {
 
         Map<IdiomaId, Idioma> datos = new LinkedHashMap<>();
 
-        datos.put(new IdiomaId(1), new Idioma(new IdiomaId(1), "Idioma 1", LocalDateTime.now()));
-        datos.put(new IdiomaId(2), new Idioma(new IdiomaId(1), "Idioma 2", LocalDateTime.now()));
+        datos.put(new IdiomaId(1), new Idioma(new IdiomaId(1), "Idioma 1", LocalDateTime.now(), null));
+        datos.put(new IdiomaId(2), new Idioma(new IdiomaId(2), "Idioma 2", LocalDateTime.now(), null));
         return datos;
     }
 
     public static final Idioma create(){
-        return new Idioma(new IdiomaId(1), "idiomaPrueba", LocalDateTime.now());
+        return new Idioma(new IdiomaId(1), "idiomaPrueba", LocalDateTime.now(), null);
     }
 }

@@ -32,6 +32,7 @@ public class IdiomaEntity {
     @Column(name = "fecha_creacion", nullable = false, updatable = false)
     private LocalDateTime fechaCreacion;
     
+    @Builder.Default
     @OneToMany(mappedBy = "idioma", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<AlumnoEntity> alumnos = new ArrayList<AlumnoEntity>();
 

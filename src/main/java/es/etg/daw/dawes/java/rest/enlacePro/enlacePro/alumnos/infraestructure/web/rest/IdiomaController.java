@@ -86,8 +86,8 @@ public class IdiomaController {
     }
 
     @PutMapping("/{id}")
-    public IdiomaResponse editIdioma(@PathVariable Integer id, @RequestBody IdiomaRequest request){
-        EditIdiomaCommand command =IdiomaMapper.toCommand(new IdiomaId(id), request);
+    public IdiomaResponse editIdioma(@PathVariable int id, @RequestBody IdiomaRequest request){
+        EditIdiomaCommand command =IdiomaMapper.toCommand(id, request);
         Idioma actualizado = editIdiomaService.update(command);
         return IdiomaMapper.toResponse(actualizado);
     }
