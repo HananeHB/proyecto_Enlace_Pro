@@ -1,14 +1,28 @@
-#### **Requisitos Funcionales (F)**
+#  Requisitos Funcionales (RF)
 
+> **Ecosistema de Usuarios:** 🎓 **Alumno** | 👨‍🏫 **Profesor** | 🏠 **Padre/Tutor** | 🔑 **Director**
 
-**Actores externos a la aplicación:** **Alumno**, **Profesor de Enlace**, **Padre/Tutor Legal**, **Director**.
+---
 
-| ID | Requisitos Funcionales | Actores/Roles |Descripción
-|---|---|---|---|
-|F1| Autenticación de Usuarios  | Alumnos/Profesores/Padres/Director   | El usuario debe conectarse al sistema (iniciar sesión).  |
-|F2| Selección de Idioma Materno  |  Alumnos/Padres  |  Deben poder seleccionar su idioma materno al iniciar sesión. |
-|F3|  Traducción de Contenido y Comunicación |  Alumnos/Padres  | El sistema debe mostrar el contenido pedagógico y los comunicados/notas con su traducción visible o accesible en el idioma materno seleccionado.  |
-|F4|  Asignación de Nivel | Profesores   |   Debe asignar un nivel de español (Bajo, Medio, Alto) después de que las pruebas hayan sido completadas por el alumnado. Estas serán realizadas cada dos meses.|
-|F5| Filtrado de Contenido por Nivel  |  Alumno  |  El sistema debe mostrar únicamente la versión del texto o ejercicio adaptado que corresponde a su nivel asignado con imágenes ditácticas para facilitar el aprendizaje.  |
-|F6|  Carga de Contenido Adaptado |  Profesores  | Deben poder subir un contenido en español y sus 3 versiones adaptadas (Bajo, Medio, Alto). |
-|F7|  Funcionalidades Director |  Director  |  Debe poder agregar, eliminar y modificar tanto a alumnos como padres, profesores e idiomas. |
+|  ID |  Requisito Funcional |  Actores |  Descripción |
+| :---: | :--- | :--- | :--- |
+| **F1** | **Autenticación de Usuarios** | Todos los roles | El sistema debe permitir el inicio de sesión seguro para cada tipo de perfil. |
+| **F2** | **Selección de Idioma** | 🎓 🏠 | Opción de elegir el idioma materno al iniciar sesión para personalizar la experiencia. |
+| **F3** | **Traducción de Contenido** | 🎓 🏠 | Visualización de contenido pedagógico y comunicados con traducción accesible en el idioma seleccionado. |
+| **F4** | **Asignación de Nivel** | 👨‍🏫 | Evaluación bimestral y asignación de nivel (**Bajo / Medio / Alto**) según el progreso del alumno. |
+| **F5** | **Filtrado Dinámico** | 🎓 | El sistema solo muestra el material adaptado al nivel del alumno, apoyado por imágenes didácticas. |
+| **F6** | **Carga Multinivel** | 👨‍🏫 | Interfaz para subir el contenido original junto a sus tres variantes adaptadas. |
+| **F7** | **Panel de Gestión (CRUD)** | 🔑 | Control total para añadir, eliminar o modificar alumnos, padres, profesores e idiomas. |
+
+---
+
+### 🛡️ Notas Técnicas
+* **Seguridad:** Los requisitos **F1** y **F7** se gestionan mediante roles de autoridad en Spring Security.
+* **Frecuencia:** Según **F4**, el sistema debe permitir la actualización de niveles cada 60 días para reflejar la evolución real.
+* **Accesibilidad:** **F5** prioriza el uso de material visual para reforzar la inmersión lingüística.
+
+---
+
+👉 **Siguiente paso:** Consulta nuestra sección Requisitos no Funcionales
+
+[![Requisitos no Funcionales](https://img.shields.io/badge/VER_REQUISITOS_NO_FUNCIONALES-blue?style=for-the-badge&logo=rocket)](requisitos_no_funcionales.md)

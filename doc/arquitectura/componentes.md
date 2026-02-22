@@ -1,58 +1,75 @@
-## Estructura Interna por Componentes de "Enlace Pro"
+# Estructura Interna por Componentes
 
-La aplicación está **modularizada** en dos grandes módulos principales: `alumnos` y `common`.
+<img src="https://img.shields.io/badge/Arquitectura-Hexagonal-blueviolet?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Microservicios-Evolución-success?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Seguridad-JWT-red?style=for-the-badge" />
 
-### 1. Módulos Principales
-
-|**Módulo**|**Contenido Principal**|
-|---|---|
-|**`alumnos`**|Lógica específica para la **gestión de estudiantes**.|
-|**`common`**|**Utilidades, modelos** y lógica transversal que puede ser usada por otros módulos.|
-
-- **Relación de Uso:** El módulo `alumnos` **utiliza** el módulo `common`.
-    
-
-### 2. Estructura por Capas (Arquitectura Limpia/Dominio)
-
-Ambos módulos (`alumnos` y `common`) siguen una estructura por capas, separando las responsabilidades de forma clara: **Infraestructura, Aplicación y Dominio**.
-
-|**Capa (Package)**|**Responsabilidad Principal**|**Dependencias**|
-|---|---|---|
-|**`domain`**|Contiene las **reglas de negocio centrales**, modelos de datos (entidades) y las interfaces del repositorio (lo que debe hacer el almacenamiento de datos).|**Es el núcleo y no debe depender de otras capas.**|
-|**`application`**|Contiene la lógica para la **orquestación y los casos de uso** (`usecase`, `service`, `command`), implementando las reglas del dominio.|Depende de `domain`.|
-|**`infrastructure`**|Contiene los **detalles técnicos** y adaptadores externos (Web REST, Base de Datos JPA, Mappers, etc.). Es la capa más externa.|Depende de `application` y `domain`.|
-
-> **Flujo de Dependencia:** Infraestructura $\rightarrow$ Aplicación $\rightarrow$ Dominio.
+> **Análisis técnico de la arquitectura de "Enlace Pro": Modularización, Clean Architecture y Microservicios.**
 
 ---
 
-### 3. Detalle de Componentes del Módulo `alumnos`
+### 1. Módulos y Microservicios Principales
 
-La capa de `infrastructure` es la más compleja por contener todos los adaptadores técnicos.
+| 📦 **Microservicio / Módulo** | 📄 **Contenido Principal** |
+| :--- | :--- |
+| **`auth-service`** | Gestión de **seguridad, usuarios, roles** y emisión de tokens **JWT**. |
+| **`alumnos-service`** | Lógica específica para la **gestión de estudiantes e idiomas**. |
+| **`common`** | **Utilidades, modelos base** y excepciones transversales compartidas. |
 
-| **Capa**             | **Componentes Clave**                                                              | **Propósito**                                                                                                             |
-| -------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| **`domain`**         | `error`, `model`, `repository`                                                     | Definición de **modelos de negocio** (`Alumno`, `Idioma`) e **interfaces** de repositorio.                                |
-| **`application`**    | `service`, `command`, `usecase`                                                    | Implementación de las **operaciones de negocio** (ej. "Crear Alumno").                                                    |
-| **`infrastructure`** | `web` (`rest`, `dto`, `validator`), `db` (`jpa`, `repository`), `config`, `mapper` | **Adaptadores web** (controladores REST), **persistencia** (implementación JPA), configuración y transformación de datos. |
+* **Relación de Uso:** Tanto `auth-service` como `alumnos-service` **utilizan** el módulo `common` para garantizar la consistencia en modelos base y utilidades.
 
 ---
-### 4. Interfaz de Repositorios (Inversión de Dependencia)
 
-Este nivel destaca cómo la capa de **Infraestructura implementa las Interfaces definidas en el Dominio**, aplicando el principio de Inversión de Dependencia.
+### 2. Estructura por Capas (Arquitectura Limpia / Hexagonal)
 
-- El módulo **`common/domain`** define **interfaces genéricas** (`CRUDRepository`) y modelos base (`Identificador`).
-    
-- El módulo **`alumnos/domain`** define **interfaces específicas** (`AlumnoRepository`, `IdiomaRepository`), que heredan de las genéricas.
-    
+Cada microservicio mantiene su independencia técnica siguiendo un flujo de dependencias estricto: **Infraestructura $\rightarrow$ Aplicación $\rightarrow$ Dominio**.
 
-#### Implementación Real en Infraestructura
+| 🏗️ **Capa (Package)** | 🎯 **Responsabilidad Principal** | 🔗 **Dependencias** |
+| :--- | :--- | :--- |
+| **`domain`** | Contiene las **reglas de negocio centrales**, entidades y las interfaces de los repositorios. Es el núcleo puro del sistema. | **Invariable.** No depende de ninguna capa externa. |
+| **`application`** | Contiene los **Casos de Uso** (servicios, orquestadores). Implementa la lógica necesaria para cumplir los requisitos de negocio. | Depende únicamente de `domain`. |
+| **`infrastructure`** | Contiene los **detalles técnicos y adaptadores**: Controladores REST, Seguridad (JWT), Clientes de BD y Mappers. | Capa más externa. Depende de `application` y `domain`. |
 
-El módulo `alumnos/infrastructure/db/jpa` contiene las implementaciones reales:
 
-- **`AlumnoJpaRepositoryImpl`** e **`IdiomaJpaRepositoryImpl`** **implementan** las interfaces del dominio (`AlumnoRepository` e `IdiomaRepository`).
-    
-- Estas implementaciones utilizan clases específicas de la tecnología (ej. `AlumnoEntityJpaRepository` de Spring Data JPA) para interactuar con la Base de Datos.
-    
 
-Esta clara separación asegura que la **lógica de negocio (`domain`) no sabe _cómo_ se guardan los datos**, sino solo **qué se puede hacer con ellos** (definido en las interfaces del repositorio).
+---
+
+### 3. Detalle de Componentes por Microservicio
+
+#### 🔐 Microservicio `auth-service` (Seguridad)
+Responsable de la protección del ecosistema mediante autenticación *stateless*.
+
+| 📂 **Capa** | 🧩 **Componentes Clave** | ⚙️ **Propósito** |
+| :--- | :--- | :--- |
+| **`domain`** | `User`, `Role`, `UserRepository` | Definición de identidad y reglas de acceso. |
+| **`application`** | `LoginUseCase`, `JwtProvider` | Lógica de validación y generación de tokens JWT. |
+| **`infrastructure`** | `SecurityConfig`, `JwtFilter`, `MariaDBAdapter` | Configuración de Spring Security y persistencia en **MariaDB**. |
+
+#### 🎓 Microservicio `alumnos-service` (Negocio)
+Responsable de la gestión académica y adaptación lingüística.
+
+| 📂 **Capa** | 🧩 **Componentes Clave** | ⚙️ **Propósito** |
+| :--- | :--- | :--- |
+| **`domain`** | `Alumno`, `Idioma`, `AlumnoRepository` | Modelos de negocio y definiciones de almacenamiento. |
+| **`application`** | `CreateAlumnoService`, `PdfExportService` | Orquestación de datos y generación de reportes. |
+| **`infrastructure`** | `RestController`, `MySQLAdapter`, `ThymeleafVistas` | Adaptadores web, estilos con **Tailwind** y persistencia en **MySQL**. |
+
+---
+
+### 4. Inversión de Dependencia y Persistencia Políglota
+
+Aplicamos el principio de **Inversión de Dependencia (DIP)** para desacoplar la lógica de negocio de la tecnología de almacenamiento.
+
+* El **Dominio** define la interfaz (ej. `AlumnoRepository`).
+* La **Infraestructura** implementa dicha interfaz mediante adaptadores específicos.
+
+#### 🛠️ Configuración de Bases de Datos Híbridas
+Gracias a la modularización, el sistema utiliza una estrategia de **persistencia políglota** adaptada a cada necesidad:
+
+1. **`auth-service` $\rightarrow$ MariaDB:** Optimizado para la gestión de usuarios y roles.
+2. **`alumnos-service` $\rightarrow$ MySQL 8.0:** Utilizado para la gestión masiva de datos académicos.
+
+> **Beneficio:** Si se requiere migrar uno de los servicios a otro motor de base de datos, el impacto se limita exclusivamente a la capa de `infrastructure` del microservicio afectado.
+
+
+

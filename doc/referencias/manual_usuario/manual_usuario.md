@@ -1,129 +1,98 @@
-# Manual de Usuario: Prototipo Web 
+# 📖 Manual de Usuario: EnlacePro
 
-Este manual detalla el uso de la interfaz web para, en este caso, la gestión de alumnos. El sistema simula las **cuatro operaciones fundamentales de gestión de datos (CRUD)**: Create, Read, Update y Delete.
+<img src="https://img.shields.io/badge/Versión-1.0-blue?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Interfaz-Liquid_Glass-purple?style=for-the-badge" />
 
-## 1. Acceso 
+<br>
 
-- **Acceso:** Para utilizar este prototipo, en primer lugar, debes autentificarte según tu rol. .
+Bienvenido al manual visual de **EnlacePro**. Este documento detalla la navegación y funcionalidades de la interfaz.
 
-- **Roles:** Este prototipo simula la vista del **Director**, con acceso total a las operaciones de gestión.
+---
+> **NOTA IMPORTANTE:** La aplicación esta docketizada por lo que al abrirla en cualquier IDE se visualizará en la raíz del proyecto un documento "docker-compose.yml" indicando que puede hacerse un ***docker copose up*** para arrancar el contenedor de la parte de Backend de la aplicación.
 
-![[prototipo atenticación.png]](img/prototipo%20atenticación.png)
-## 2. Visión General de la Aplicación 
+## 🔐 1. Acceso y Salida (Login & Logout)
 
-Una vez identificado como tal, tu siguiente vista será:
+El sistema cuenta con un portal de acceso seguro y una salida controlada para proteger los datos de los alumnos.
 
-![[prototipo vista director.png]](img/prototipo%20vista%20director.png)
+### Inicio de Sesión (Login)
+La interfaz permite elegir roles y validar credenciales con JWT.
 
-Permitiéndote la gestión tanto de alumnos y profesores como de idiomas.
-## 2. Visión General de la Aplicación 
+> ![Login de la Aplicación](/img/manualUsuario/logIn.png)
 
-Supongamos que tu tarea actual es gestionar alumnos. La aplicación organiza la funcionalidad de gestión en **cuatro pestañas principales**, visibles en la parte superior del panel:
+### Cierre de Sesión (Logout)
+Ubicado en la parte inferior de la barra lateral para finalizar la sesión de forma segura.
 
-- **Listar Alumnos (`READ`):** Muestra el registro completo de alumnos.
+> ![Cierre de Sesión](/img/manualUsuario/logOut.png)
 
-- **Añadir Nuevo Alumno (`CREATE`/`POST`):** Permite ingresar nuevos alumnos al sistema.
+---
 
-- **Editar Alumno (`UPDATE`/`PUT`):** Modifica los datos de un alumno existente.
+## 📅 2. Planificación y Calendario
 
-- **Eliminar Alumno (`DELETE`):** Borra permanentemente un registro.
+EnlacePro incluye un sistema de gestión de tiempos para organizar actividades.
 
-![[vista general 1.png]](img/vista%20general.png)
+### Vistas de Agenda
+Permite visualizar eventos próximos tanto en formato vista semanal como en una perspectiva completa de mes.
 
-## 3. Pestaña 1: Listar Alumnos (`READ`) 
+> ![Vista Calendario](/img/manualUsuario/calendario.png)
+> ![Calendario Vista Mes](/img/manualUsuario/vistaMes.png)
 
-### Objetivo
+---
 
-Consultar el estado actual y los detalles de todos los alumnos registrados en el sistema.
+## 📊 3. Panel de Control (Dashboard)
 
-### Uso
+El centro de mando con métricas en tiempo real sobre el estado del aula.
 
-1. Al hacer clic en esta pestaña, o al cargar la página por primera vez, la aplicación inicia el proceso de **Listar Alumnos**.
+> ![Dashboard Modo Claro](/img/manualUsuario/escritorio.png)
 
-2. La tabla se te mostrará con la siguiente información clave para cada alumno:
+### Vista en Modo Oscuro
+Optimización visual para entornos de baja luminosidad y reducción de fatiga visual.
 
-| **Columna**            | **Descripción**                                                | **Importancia**                   |
-| ---------------------- | -------------------------------------------------------------- | --------------------------------- |
-| **ID**                 | Identificador único del alumno.                                | Necesario para Editar y Eliminar. |
-| **Nombre y Apellidos** | Información personal del alumno.                               |                                   |
-| **Email y Teléfono**   | Datos de contacto.                                             |                                   |
-| **ID Idioma Nativo**   | Número de referencia del idioma maternoo (ej: `1` para Chino). |                                   |
+> ![Dashboard Modo Oscuro](/img/manualUsuario/modoOscuro.png)
 
-![[get (1).png]](img/get%20(1).png)
+---
 
+## 4. Gestión de Alumnado e Idiomas
 
-## 4. Pestaña 2: Añadir Nuevo Alumno (`CREATE`) 
+Sección dedicada a la gestión del alumnado matriculado en el Aula de Enlace. Aquí se mostrarán los datos personales del alumnado asi como su lengua materna.
 
-### Objetivo
+### Listados y Formularios
+Tablas detalladas para visualizar datos personales y educativos del alumnado. Incluyendo también una opción para descargar en formato pdf un documento con el listado y sus datos.
 
-Registrar un nuevo alumno en la base de datos simulada.
-
-### Uso
-
-1. Navega a la pestaña **Añadir Nuevo Alumno**.
-
-2. Rellena el formulario completo con los datos del nuevo estudiante:
-    
-    - **Nombre y Apellidos**
-    
-    - **Email** (Debe ser un formato de correo válido).
-    
-    - **Numero de Telefono**
-    
-    - **ID Idioma Nativo** (Solo acepta valores numéricos).
-    
-![[post.png]](img/post.png)
+> ![Tabla de Alumnos](/img/manualUsuario/listarAlumno.png)
 
 
-2. Al finalizar, recibirás un **mensaje de confirmación** indicando el éxito de la operación y el **nuevo ID asignado** al alumno.
+### Flujos de Matriculación, Edición, Borrado y Confirmación
+El sistema utiliza un componente unificado para las acciones de modificación y eliminación. Al realizar cambios o borrar un registro (sea alumno o idioma), aparecerá un aviso de confirmación seguido de un mensaje de éxito.
 
-![[mensaje post.png]](img/mensaje%20post.png)
+> ![Formulario de Registro](/img/manualUsuario/formularioAlumno.png)
+> ![Confirmación de Acción y Mensaje de Éxito](/img/manualUsuario/alumnoMatriculado.png)
 
-## 5. Pestaña 3: Editar Alumno (`UPDATE`) 
+ **Pop up al editar alumno o idioma**
+> ![Confirmación de Acción y Mensaje de Éxito](/img/manualUsuario/editarAlumno.png)
 
-### Objetivo
+ **Pop up al eliminar alumno o idioma**
+> ![Confirmación de Acción y Mensaje de Éxito](/img/manualUsuario/eliminarAlumno.png)
 
-Modificar o actualizar todos los datos de un alumno existente.
+ **Mensaje de éxito al editar alumno o idioma**
+> ![Confirmación de Acción y Mensaje de Éxito](/img/manualUsuario/alumnoActualizado.png)
 
-### Uso
-
-1. Navega a la pestaña **Editar Alumno**.
-
-2. Introduce el **ID del Alumno** que deseas modificar en el primer campo. Es improtante que este ID sea correcto.
-
-3. Rellena **TODOS** los demás campos (Nombre, Apellidos, Email, Teléfono, ID Idioma Nativo) con la nueva información o reintroduce la información que no deseas cambiar.
-
-4. Haz clic en **Actualizar Alumno**.
-
-5. Recibirás un **mensaje de confirmación** si el ID fue encontrado y actualizado con éxito. Si el ID no existe, se mostrará un mensaje de error (**Alumno no encontrado**).
+ **Mensaje de éxito al eliminar alumno o idioma**
+> ![Confirmación de Acción y Mensaje de Éxito](/img/manualUsuario/alumnoEliminado.png)
 
 
-![[actualizar.png]](img/actualizar.png)
+---
 
+## 5. Personalización y Accesibilidad (i18n)
 
-> **Nota Importante:** Este aplicación procesa una operación `de actualización` completa. Siempre debes enviar **todos los campos** del expediente, incluso si solo deseas cambiar uno.
+Ejemplo de cómo cambia toda la interfaz al alternar idiomas y temas en tiempo real desde la barra superior.
 
-## 6. Pestaña 4: Eliminar Alumno (`DELETE`) 
+> ![Traducción General](/img/manualUsuario/traduccionIngles.png)
 
-### Objetivo
+**Traducción modo oscuro**
+> ![Traducción General Modo Oscuro](/img/manualUsuario/modoOscuroIngles.png)
 
-Dar de baja permanentemente un alumno del sistema.
+---
 
-### Uso
-
-1. Navega a la pestaña **Eliminar Alumno**.
-
-2. Introduce el **ID del Alumno** a Eliminar.
-
-3. Haz clic en el botón rojo **Borrar Alumno**.
-
-
-![[borrar.png]](img/borrar.png)
-
-
-> **Advertencia:**  **¡La eliminación es inmediata y permanente!**
-
-4. Recibirás un **mensaje de confirmación** de borrado exitoso. Si el ID no existe, se mostrará un error (**Alumno no encontrado**).
-
-![[mensaje borrar.png]](img/mensaje%20borrar.png)
-
+  <br>
+  <img src="https://img.shields.io/badge/Soporte-Aula_de_Enlace-green?style=flat-square" />
+  <img src="https://img.shields.io/badge/Desarrollado_para-Gestión_Eficiente-blue?style=flat-square" />

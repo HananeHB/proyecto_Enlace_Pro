@@ -1,31 +1,64 @@
-# Propuesta de valor de Enlace Pro
+# Propuesta de Valor: Enlace Pro
 
-## El desafío y la solución
+<img src="https://img.shields.io/badge/Propuesta-Innovación_Educativa-blue?style=for-the-badge&logo=rocket" />
+<img src="https://img.shields.io/badge/Solución-Todo_en_Uno-green?style=for-the-badge" />
 
-En el Aula de Enlace, los profesores y los alumnos se enfrentan a un gran desafío constante. Los materiales no están adaptados al nivel del idioma a aprender por el alumnado, pues no todos tienen el mismo nivel aunque se les agrupe en un mismo aula. La gestión de contenidos requiere múltiples herramientas desconectadas, es decir, no gestionan la clase desde un mismo sitio sino usando varias aplicaciones para gestionar distintas tareas. Además las familias no siempre pueden seguir el progreso de sus hijos. Esto genera frustración, sobrecarga y pérdida de tiempo. 
 
-Enlace Pro nace para resolver estos problemas de manera integral, ofreciendo una solución única y completa que ninguna otra herramienta del mercado ha podido brindar hasta ahora. 
 
-## ¿Por qué Enlace Pro es diferente y mejor? 
+## El Desafío y la Solución
 
-Nuetsra propuesta de valor se cimienta en cuatro pilares tecnológicos y pedagógicos clave:
+En el Aula de Enlace, el caos de herramientas desconectadas genera **frustración y pérdida de tiempo**. 
 
-1. **Adaptación automática al nivel del alumno**
-   Cada estudiante recibe el contenido en la versión que corresponde a su nivel (bajo, medio o alto). Esto asegura que los materiales sean comprensibles, facilitando un aprendizaje progresivo y evitando la frustración de enfrentarse a textos demasiado complejos. 
+> **La Realidad:** Los materiales no están adaptados al nivel real del alumno (bajo/medio/alto) y las familias quedan fuera del proceso por la barrera del idioma.
 
-2. **Traducción clara y accesible para alumnos y familias**
-   
-   Enlace Pro no solo traduce palabras sueltas, sino que presenta los contenidos y comunicados en un formato comprensible para cada usuario. Las familias pueden traducir los informes recibidos por el profesorado evitando la barrera del idioma y permitiendoles siguir de cerca el progreso de sus hijos.
+**Enlace Pro** nace para resolver estos problemas de manera integral, ofreciendo una solución única y completa que ninguna otra herramienta del mercado ha podido brindar hasta ahora.
 
-3. **Ahorro de tiempo y reducción de sobrecarga para los docentes**
-   Los profesores solo suben el contenido una vez y el sistema genera todas las versiones necesarias(adaptadas y traducidas).Así se evita usar varias herramientas y se ahorra tiempo para centrarse en enseñar y acompañar a los alumnos. 
+---
 
-4. **Un flujo de trabajo unificado y sencillo**
-   Enlace Pro reúne todo en un solo flujo: subir el contenido, traducirlo y adaprarlo al nivel del alumno. Así, cada usuario recibe la versión correcta sin tener que usar distintas herramientas. 
+## ¿Por qué Enlace Pro es diferente?
 
-## Impacto real 
-- **Alumnos:** aprenden con rapidez, eficacia y motivación gracias a contenidos claros y hechos a medida.
-  
-- **Profesores:** se liberan de tareas repetitivas y pueden dedicar más tiempo a la enseñanza y al acompañamiento individual.
-   
-- **Familias:** reciben información compelta, traducida y fácil de entender, para tener un seguimiento del progreso de su hij@. 
+Nuestra propuesta se cimienta en **cuatro pilares clave**:
+
+<details>
+<summary><b>1️⃣ Adaptación automática al nivel del alumno</b></summary>
+<br>
+Cada estudiante recibe el contenido en la versión que corresponde a su nivel (bajo, medio o alto). 
+
+- ✅ <b>Beneficio:</b> Evita la frustración y asegura un aprendizaje progresivo.
+</details>
+
+<details>
+<summary><b>2️⃣ Traducción con clara y accesible (Alumnos + Familias)</b></summary>
+<br>
+Enlace Pro no solo traduce palabras sueltas. Adaptamos los comunicados e informes para que las familias entiendan realmente cómo van sus hijos.
+
+- ✅ <b>Beneficio:</b> Rompe el aislamiento de los padres y los integra en el instituto.
+</details>
+
+<details>
+<summary><b>3️⃣ Ahorro de tiempo y reducción de sobrecarga para los docentes</b></summary>
+<br>
+El profesor solo sube el contenido original. Enlace Pro genera automáticamente las versiones adaptadas y traducidas.
+
+- ✅ <b>Beneficio:</b> Reducción drástica de la carga administrativa y el trabajo repetitivo.
+</details>
+
+<details>
+<summary><b>4️⃣ Flujo de trabajo unificado y sencillo</b></summary>
+<br>
+Enlace Pro reúne todo en un solo flujo: subir el contenido, traducirlo y adaprarlo al nivel del alumno. Así, cada usuario recibe la versión correcta sin tener que usar distintas herramientas.
+
+- ✅ <b>Beneficio:</b> Orden mental y eficiencia operativa.
+</details>
+
+---
+
+## Impacto Real: El Triángulo del Éxito
+
+| 🎓 Alumnos | 👨‍🏫 Profesores | 🏠 Familias |
+| :--- | :--- | :--- |
+| Aprenden con **motivación** al entender lo que leen. | Se liberan de tareas repetitivas para **enseñar**. | Participan en la educación con **información clara**. |
+| Materiales hechos a medida. | Acompañamiento individualizado. | Seguimiento sin barreras de idioma. |
+
+---
+

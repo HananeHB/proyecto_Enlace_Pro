@@ -1,22 +1,62 @@
-# Enlace Pro: Cómo funciona su arquitectura
+#  Arquitectura del Ecosistema Distribuido
 
-La aplicación **Enlace Pro** está diseñada con una estructura simple pero efectiva que permite que los usuarios interactúen con ella de manera rápida y eficiente. Esta arquitectura tiene tres partes principales: **Usuario (Cliente), Servidor de Aplicación (Backend) y Base de Datos**. A continuación se explica cómo se conectan y funcionan entre sí.
+ <img src="https://img.shields.io/badge/Infraestructura-Docker_Compose-blue?style=for-the-badge&logo=docker" />
+  <img src="https://img.shields.io/badge/Bases_Datos-Persistentes-green?style=for-the-badge" />
+  
+La aplicación **Enlace Pro** ha evolucionado de un modelo monolítico a una **arquitectura de microservicios distribuida**. Ahora, el sistema no depende de una sola pieza, sino de un conjunto de contenedores que trabajan de forma coordinada para ofrecer mayor seguridad y escalabilidad.
 
-
-## 1. Desde el usuario hasta el servidor
-
-Todo comienza cuando un usuario abre Enlace Pro por ejemplo, desde su navegador. Cuando realiza una request, se envía una **solicitud al servidor** usando el puerto 8080. 
-## 2. Qué ocurre dentro del servidor
-
-Una vez que la solicitud llega al servidor:
-
-1. **Sistema operativo:** Se encarga de gestionar los recursos de la máquina, como la memoria y el procesador.
-2. **Java Virtual Machine (JVM):** Aquí es donde se ejecuta la aplicación Java. La JVM traduce las instrucciones de Enlace Pro para que la computadora pueda ejecutarlas.
-3. **Spring Boot:** Este es el corazón de la aplicación. Spring Boot procesa la solicitud del usuario y decide qué hacer con ella. Por ejemplo, si el usuario quiere guardar un registro, Spring Boot se encarga de manejar esa operación.
-
-Si la acción requiere acceder a los datos, Spring Boot se conecta a la **base de datos H2** a través del  JDBC, que actúa como un puente entre la aplicación y la base de datos.
+Esta arquitectura se divide en tres niveles: **Puerta de Entrada (Gateway), Lógica de Negocio (Microservicios) y Persistencia (Bases de Datos Externas)**.
 
 
-## 3. La base de datos
 
-La base de datos H2 es **temporal y reside en la memoria del servidor**, lo que significa que es muy rápida. Sin embargo, los datos se borran si el servidor se reinicia. H2 recibe las solicitudes de lectura o escritura y ejecuta la operación correspondiente de inmediato.
+---
+
+## 1. El punto de entrada: API Gateway
+En esta nueva etapa, el usuario no contacta directamente con los servicios finales. Todo pasa por el **API Gateway** (puerto 8080):
+
+* **Punto Único de Acceso:** El cliente (navegador/Postman) solo conoce una dirección.
+* **Enrutamiento Inteligente:** El Gateway recibe la solicitud y, según la URL (`/auth/**` o `/alumnos/**`), la redirige al microservicio correspondiente.
+* **Seguridad Centralizada:** Actúa como el primer filtro de seguridad para las peticiones externas.
+
+---
+
+## 2. El motor del sistema: Docker y JVM
+
+A diferencia de la versión anterior, cada componente vive dentro de un **Contenedor Docker**, lo que garantiza que la app funcione igual en cualquier ordenador.
+
+1. **Docker Engine:** Gestiona los contenedores, aislando los recursos y permitiendo que MySQL, MariaDB y los microservicios convivan sin conflictos.
+2. **Java Virtual Machine (JVM):** Cada microservicio (`Auth` y `Alumnos`) corre su propia JVM optimizada. Se han configurado límites de memoria y conteo de hilos (`BPL_JVM_THREAD_COUNT`) para asegurar la estabilidad del sistema.
+3. **Spring Boot & Spring Security:** * **Auth Service:** Procesa credenciales y genera tokens **JWT**.
+    * **Alumnos Service:** Gestiona la lógica académica y la generación de reportes PDF.
+
+---
+
+## 3. Persistencia Políglota (Bases de Datos Externas)
+
+Hemos sustituido la base de datos temporal H2 por un sistema de **persistencia real y externa**. Los datos ya no se borran al reiniciar el servidor gracias al uso de **Volúmenes de Docker**.
+
+| 🗄️ Componente | 🛠️ Tecnología | 🎯 Rol |
+| :--- | :--- | :--- |
+| **BD Seguridad** | **MariaDB** | Almacena usuarios, roles y permisos de acceso. |
+| **BD Negocio** | **MySQL 8.0** | Almacena la información de alumnos, idiomas y registros académicos. |
+
+### ¿Cómo se conectan?
+La comunicación se realiza mediante una **Red Virtual de Docker**. Los microservicios utilizan conectores JDBC para hablar con sus respectivas bases de datos, utilizando variables de entorno para una configuración segura y flexible (Perfiles `dev` y `prod`).
+
+---
+
+## 4. Flujo de una solicitud (Ejemplo: Ver Alumnos)
+
+
+
+1. **Usuario:** Solicita la lista de alumnos al Gateway (Puerto 8080).
+2. **Gateway:** Identifica que la ruta pertenece a `alumnos-service` y le redirige la petición.
+3. **Security:** Se valida el token **JWT** enviado por el usuario.
+4. **Servicio:** El microservicio de Alumnos consulta a la base de datos **MySQL**.
+5. **Respuesta:** Los datos viajan de vuelta al usuario a través del Gateway.
+
+---
+
+
+
+👉 **Siguiente paso:** [**Seguridad JWT y Roles 🔐**](seguridad.md)

@@ -1,4 +1,4 @@
-# Proyecto : ENLACE PRO
+# Proyecto : EnlacePro
 ***Plataforma de adaptación lingüística para Aulas de Enlace (Secundaria).***
 
 --- 
@@ -10,7 +10,7 @@ Enlace Pro es una aplicación pensada para facilitar el trabajo de profesores y 
 ---
 
 
-- **Nombre de la Aplicación**: Enlace Pro
+- **Nombre de la Aplicación**: EnlacePro
 - **Versión**: 1.0.0
 - **Última actualización:** Febrero 2026
   - [Consulta el Historial detallado de Versiones aquí](/doc/versiones.md)
