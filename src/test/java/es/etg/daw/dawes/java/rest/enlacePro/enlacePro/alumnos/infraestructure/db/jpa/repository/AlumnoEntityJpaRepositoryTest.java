@@ -20,9 +20,6 @@ public class AlumnoEntityJpaRepositoryTest {
     @Autowired
     private AlumnoEntityJpaRepository repository;
 
-
-
-
     @Test
     @Order(1)
     void findAll() {

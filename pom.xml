@@ -136,11 +136,11 @@
 		</dependency>
 		
 		<!-- Base de datos h2-->
-		<dependency>
+		<!-- <dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
-		</dependency>
+		</dependency> -->
 
 		<!-- Source: https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui -->
 		<dependency>
@@ -180,6 +180,15 @@
 			<version>0.11.5</version>
 			<scope>runtime</scope>
 		</dependency>
+
+
+		<!--MySQL-->
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
 	</dependencies>
 
 	<build>
