@@ -20,7 +20,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 @Builder
-@Table(name = "IDIOMAS")
+@Table(name = "idiomas")
 public class IdiomaEntity {
 
     @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
