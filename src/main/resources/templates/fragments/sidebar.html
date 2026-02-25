@@ -1,0 +1,81 @@
+<div th:fragment="sidebar" class="flex flex-col h-full">
+    <div class="sidebar-header p-8 flex items-center gap-3 border-b border-white/10 relative z-10">
+        <img th:src="@{/img/logo_EnlacePro.png}" alt="Logo EnlacePro"
+            class="w-9 h-9 object-contain rounded-md shadow-lg">
+        <span
+            class="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent">EnlacePro</span>
+    </div>
+
+    <nav class="flex-1 p-4 space-y-1 overflow-y-auto no-scrollbar relative z-10">
+        <div class="nav-group-title px-4 py-4 text-[10px] uppercase tracking-[2px] font-bold opacity-40"
+            th:text="#{director.menu.titulo.general}">Resumen</div>
+
+        <a th:href="@{/web/enlacePro/admin}"
+            class="sidebar-item flex items-center gap-3 px-4 py-3.5 rounded-2xl transition-all duration-100 text-sm hover:translate-x-1"
+            th:classappend="${activePage == 'escritorio' ? 'active font-semibold' : ''}">
+            <span class="material-symbols-rounded">dashboard</span>
+            <span th:text="#{director.menu.titulo.escritorio}">Escritorio</span>
+        </a>
+
+        <div class="nav-group-title px-4 py-4 text-[10px] uppercase tracking-[2px] font-bold opacity-40"
+            th:text="#{director.menu.titulo.general.alumnado}">Alumnado</div>
+
+        <a th:href="@{/web/enlacePro/admin/alumnos}"
+            class="sidebar-item flex items-center gap-3 px-4 py-3.5 rounded-2xl transition-all duration-100 text-sm hover:translate-x-1"
+            th:classappend="${activePage == 'alumnos-lista' ? 'active font-semibold' : ''}">
+            <span class="material-symbols-rounded">group</span>
+            <span th:text="#{director.menu.titulo.listar.alumnos}">Ver alumnado</span>
+        </a>
+
+        <a th:href="@{/web/enlacePro/admin/alumnos/nuevo}"
+            class="sidebar-item flex items-center gap-3 px-4 py-3.5 rounded-2xl transition-all duration-100 text-sm hover:translate-x-1"
+            th:classappend="${activePage == 'alumnos-formulario' ? 'active font-semibold' : ''}">
+            <span class="material-symbols-rounded">person_add</span>
+            <span th:text="#{director.menu.titulo.agregar.alumno}">Matricular alumnado</span>
+        </a>
+
+        <div class="nav-group-title px-4 py-4 text-[10px] uppercase tracking-[2px] font-bold opacity-40"
+            th:text="#{director.menu.titulo.general.idiomas}">Idiomas</div>
+
+        <a th:href="@{/web/enlacePro/admin/idiomas}"
+            class="sidebar-item flex items-center gap-3 px-4 py-3.5 rounded-2xl transition-all duration-100 text-sm hover:translate-x-1"
+            th:classappend="${activePage == 'idioma-lista' ? 'active font-semibold' : ''}">
+            <span class="material-symbols-rounded">translate</span>
+            <span th:text="#{director.menu.titulo.listar.idiomas}">Ver idiomas</span>
+        </a>
+
+        <a th:href="@{/web/enlacePro/admin/idiomas/nuevo}"
+            class="sidebar-item flex items-center gap-3 px-4 py-3.5 rounded-2xl transition-all duration-100 text-sm hover:translate-x-1"
+            th:classappend="${activePage == 'idioma-formulario' ? 'active font-semibold' : ''}">
+            <span class="material-symbols-rounded">add_circle</span>
+            <span th:text="#{director.menu.titulo.agragar.idioma}">Agregar idioma</span>
+        </a>
+
+        <div class="nav-group-title px-4 py-4 text-[10px] uppercase tracking-[2px] font-bold opacity-40"
+            th:text="#{director.menu.titulo.general.gestion}">Gestión</div>
+
+        <a th:href="@{/web/enlacePro/admin/calendario}"
+            class="sidebar-item flex items-center gap-3 px-4 py-3.5 rounded-2xl transition-all duration-100 text-sm hover:translate-x-1"
+            th:classappend="${activePage == 'calendario' ? 'active font-semibold' : ''}">
+            <span class="material-symbols-rounded">calendar_today</span>
+            <span th:text="#{director.menu.titulo.horario}">Horario Director</span>
+        </a>
+    </nav>
+
+    <div class="sidebar-footer p-6 border-t border-white/10 flex items-center gap-3 relative z-10">
+        <div class="w-10 h-10 rounded-xl overflow-hidden border border-white/20 flex-shrink-0">
+            <img src="https://ui-avatars.com/api/?name=Director+General&background=000f9b&color=fff" alt="Avatar"
+                class="w-full h-full object-cover">
+        </div>
+        <div class="flex-1 overflow-hidden">
+            <p class="text-xs font-bold truncate" th:text="#{director.escritorio.usuario.rol}">Director General</p>
+            <p class="text-[10px] opacity-50 truncate" th:text="#{director.escritorio.usuario.tipo}">Administrador</p>
+        </div>
+
+        <a th:href="@{/web/enlacePro/logout}"
+            class="w-8 h-8 rounded-lg flex items-center justify-center text-red-400 hover:bg-red-500/10 transition-colors duration-200"
+            title="Cerrar sesión">
+            <span class="material-symbols-rounded text-[20px]">logout</span>
+        </a>
+    </div>
+</div>

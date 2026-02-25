@@ -1,0 +1,49 @@
+<header th:fragment="header" class="flex items-center justify-between py-10 px-6 gap-6 relative w-full">
+    <div class="flex-shrink-0">
+        <h1 class="text-3xl font-extrabold tracking-tight" th:text="#{director.escritorio.titulo}">Hola, Director 👋
+        </h1>
+        <p class="text-sm opacity-60" th:text="#{director.escritorio.subtitulo}">Bienvenido de nuevo al panel de
+            control.</p>
+    </div>
+
+    <div class="relative flex-1 max-w-md">
+        <span class="material-symbols-rounded absolute left-4 top-1/2 -translate-y-1/2 opacity-40">search</span>
+        <input type="text" placeholder="Buscar..."
+            class="w-full pl-12 pr-4 py-3.5 rounded-2xl glass-panel outline-none focus:ring-2 ring-blue-500/20 transition-all duration-100 text-sm">
+    </div>
+
+    <div class="flex items-center gap-4 relative">
+        <!-- Dropdown de Idiomas -->
+        <div class="relative" id="languageDropdownContainer">
+            <button onclick="toggleLanguageMenu()"
+                class="icon-box w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg transition-transform hover:scale-110 border-none outline-none">
+                <span class="material-symbols-rounded">language</span>
+            </button>
+
+            <div id="languageMenu"
+                class="hidden absolute right-0 mt-3 w-48 glass-panel rounded-2xl p-2 z-[100] border border-white/20 shadow-2xl">
+                <button onclick="setLanguage('es')" class="dropdown-item w-full">
+                    <span class="text-lg">🇪🇸</span>
+                    <span>Español</span>
+                </button>
+                <button onclick="setLanguage('en')" class="dropdown-item w-full">
+                    <span class="text-lg">🇬🇧</span>
+                    <span>Inglés</span>
+                </button>
+            </div>
+        </div>
+
+        <button onclick="toggleTheme()"
+            class="icon-box w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg transition-transform hover:scale-110 border-none outline-none">
+            <span id="themeIcon" class="material-symbols-rounded">dark_mode</span>
+        </button>
+        <button
+            class="icon-box w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg transition-transform hover:scale-110 border-none outline-none relative">
+            <span class="material-symbols-rounded">notifications</span>
+            <span
+                class="absolute -top-1 -right-1 w-5 h-5 bg-indigo-600 border-2 border-white rounded-full text-[10px] flex items-center justify-center font-bold text-white">5</span>
+        </button>
+    </div>
+    <script th:src="@{/js/desplegableIdioma.js}"></script>
+    <script th:src="@{/js/header.js}"></script>
+</header>

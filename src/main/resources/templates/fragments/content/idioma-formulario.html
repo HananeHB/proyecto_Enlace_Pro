@@ -1,0 +1,112 @@
+<div th:fragment="content" class="flex-1 flex flex-col min-h-0">
+
+    <div id="successModal"
+        class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity duration-300 opacity-0 pointer-events-none"
+        th:classappend="${successNombre != null} ? 'opacity-100 pointer-events-auto' : ''">
+        <div class="glass-panel p-8 rounded-[32px] max-w-sm w-full text-center border border-white/20 shadow-2xl">
+            <div
+                class="w-20 h-20 bg-emerald-500/20 text-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span class="material-symbols-rounded text-5xl">check_circle</span>
+            </div>
+            <h2 class="text-2xl font-bold mb-2" th:text="#{admin.language.exito.title}">¡Guardado con éxito!</h2>
+            <p class="text-sm opacity-60 mb-6" th:text="#{admin.language.exito.subtitle}">El idioma ha sido registrado correctamente en el sistema.</p>
+
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full border border-white/10 mb-8">
+                <span class="material-symbols-rounded text-indigo-400 text-lg">language</span>
+                <span class="font-bold text-indigo-400" th:text="${successNombre}">Idioma</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <a th:href="@{/web/enlacePro/admin/idiomas}" th:text="#{admin.language.exito.label.verIdiomas}"
+                    class="py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all text-xs font-bold flex items-center justify-center gap-2">
+                    <span class="material-symbols-rounded text-sm">format_list_bulleted</span>
+                    Ver lista
+                </a>
+                <a th:href="@{/web/enlacePro/admin/idiomas/nuevo}" th:text="#{admin.language.exito.label.nuevoIdioma}"
+                    class="py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 transition-all text-xs font-bold text-white flex items-center justify-center gap-2">
+                    <span class="material-symbols-rounded text-sm">add</span>
+                    Nuevo
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex-1 overflow-y-auto no-scrollbar p-5">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 max-w-6xl mx-auto">
+
+            <div class="lg:col-span-4 space-y-4">
+                <div class="glass-panel p-5 rounded-[26px] border-l-4 border-indigo-500 relative overflow-hidden">
+                    <div class="flex gap-4">
+                        <span class="material-symbols-rounded text-indigo-400 text-xl">info</span>
+                        <div>
+                            <h4 class="font-bold text-sm mb-0.5" th:text="#{admin.language.info.titulo.uno}">¿Qué nombre usar?</h4>
+                            <p class="text-xs opacity-60 leading-relaxed" th:text="#{admin.language.info.texto.uno}">Usa nombres estandarizados (ej. "Inglés
+                                británico") para evitar duplicados.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-5 rounded-[26px] border-l-4 border-amber-500 relative overflow-hidden">
+                    <div class="flex gap-4">
+                        <span class="material-symbols-rounded text-amber-400 text-xl">bolt</span>
+                        <div>
+                            <h4 class="font-bold text-sm mb-0.5" th:text="#{admin.language.info.titulo.dos}">Acceso Rápido</h4>
+                            <p class="text-xs opacity-60 leading-relaxed" th:text="#{admin.language.info.texto.dos}">Una vez guardado, estará disponible
+                                inmediatamente en el sistema.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-5 rounded-[26px] border-l-4 border-emerald-500 relative overflow-hidden">
+                    <div class="flex gap-4">
+                        <span class="material-symbols-rounded text-emerald-400 text-xl">help_center</span>
+                        <div>
+                            <h4 class="font-bold text-sm mb-0.5" th:text="#{admin.language.info.titulo.tres}">¿Necesitas ayuda?</h4>
+                            <p class="text-xs opacity-60 leading-relaxed" th:text="#{admin.language.info.texto.tres}">Soporte disponible de 9:00 a 18:00 para
+                                cualquier incidencia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-8">
+                <div class="glass-panel p-6 rounded-[30px] relative overflow-hidden">
+
+                    <div class="icon-box mb-4 mx-auto w-14 h-14">
+                        <span class="material-symbols-rounded text-2xl">public</span>
+                    </div>
+
+                    <div class="text-center mb-6">
+                        <h2 class="text-xl font-bold mb-1" th:text="#{admin.language.form.title}">Nuevo Idioma</h2>
+                        <p class="text-xs opacity-50" th:text="#{admin.language.form.desc}">Habilite una nueva lengua
+                            para los procesos de matrícula.</p>
+                    </div>
+
+                    <form th:action="@{/web/enlacePro/admin/idiomas/nuevo}" method="post" class="space-y-5">
+                        <div class="space-y-2">
+                            <label for="idioma-nombre" class="form-label text-[10px]"
+                                th:text="#{admin.language.form.label.name}">Nombre del Idioma</label>
+                            <div class="relative">
+                                <span
+                                    class="material-symbols-rounded absolute left-4 top-1/2 -translate-y-1/2 text-sm opacity-40">edit</span>
+                                <input type="text" id="idioma-nombre" name="nombre"
+                                    class="form-input py-2.5 pl-11 text-sm w-full"
+                                    th:placeholder="#{admin.language.form.placeholder}" autocomplete="off" required>
+                            </div>
+                            <p th:if="${error}" th:text="${error}"
+                                class="text-[10px] text-red-400 mt-1 ml-2 font-medium uppercase tracking-wider"></p>
+                        </div>
+
+                        <div class="pt-4">
+                            <button type="submit"
+                                class="w-full py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 transition-all font-bold text-white shadow-lg shadow-indigo-500/20 flex items-center justify-center gap-3">
+                                <span class="material-symbols-rounded text-xl">save</span>
+                                <span th:text="#{admin.language.form.btn.save}" style="color: white;">Guardar Registro</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

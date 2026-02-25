@@ -1,0 +1,184 @@
+<div th:fragment="content" class="flex flex-col flex-1 h-full min-h-0 overflow-hidden">
+    <div class="flex flex-col flex-1 p-6 min-h-0">
+        <div class="flex justify-between items-center mb-6 flex-shrink-0">
+            <div class="flex gap-3">
+                <a th:href="@{/web/enlacePro/admin/alumnos/pdf}"
+                    class="glass-panel px-4 py-2 rounded-xl flex items-center gap-2 hover:bg-white/20 transition-all text-sm font-semibold">
+                    <span class="material-symbols-rounded text-red-400">picture_as_pdf</span>
+                    <span>PDF</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="glass-panel rounded-[24px] overflow-hidden flex flex-col max-h-full">
+            <div class="overflow-x-auto overflow-y-auto custom-scrollbar flex-1">
+                <table class="w-full text-left border-collapse">
+                    <thead class="sticky top-0 z-20">
+                        <tr class="sidebar-border border-b bg-[#b9c0f3f2]/95 backdrop-blur-md">
+                            <th class="p-4 text-xs font-bold uppercase tracking-wider opacity-60"
+                                th:text="#{admin.alum.table.apellidos}">Apellidos</th>
+                            <th class="p-4 text-xs font-bold uppercase tracking-wider opacity-60"
+                                th:text="#{admin.alum.table.name}">Nombre</th>
+                            <th class="p-4 text-xs font-bold uppercase tracking-wider opacity-60"
+                                th:text="#{admin.alum.table.email}">Email</th>
+                            <th class="p-4 text-xs font-bold uppercase tracking-wider opacity-60"
+                                th:text="#{admin.alum.table.idioma}">Idioma</th>
+                            <th class="p-4 text-xs font-bold uppercase tracking-wider opacity-60"
+                                th:text="#{admin.alum.table.creationDate}">Matriculación</th>
+                            <th class="p-4 text-xs font-bold uppercase tracking-wider opacity-60 text-right"
+                                th:text="#{admin.alum.table.actions}">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lista-alumnos-body" class="divide-y sidebar-border">
+                        <tr th:each="i : ${alumnos}" class="hover:bg-white/5 transition-colors">
+                            <td class="p-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-lg bg-indigo-500/20 flex items-center justify-center">
+                                        <span class="material-symbols-rounded text-indigo-400 text-lg">person</span>
+                                    </div>
+                                    <span class="font-medium" th:text="${i.apellidos}">Apellidos</span>
+                                </div>
+                            </td>
+                            <td class="p-4 font-medium" th:text="${i.nombre}">Nombre</td>
+                            <td class="p-4 opacity-70 text-sm" th:text="${i.email}">email@ejemplo.com</td>
+                            <td class="p-4">
+                                <span th:if="${i.idiomaId != null}" th:text="${idiomasMap[i.idiomaId.value]}"
+                                    class="px-3 py-1 rounded-full text-xs font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                                </span>
+                                <span th:unless="${i.idiomaId != null}" class="opacity-30 italic text-xs">N/A</span>
+                            </td>
+                            <td class="p-4">
+                                <div class="flex flex-col">
+                                    <span class="text-sm font-medium"
+                                        th:text="${#temporals.format(i.fechaCreacion, 'dd/MM/yyyy')}">01/01/2024</span>
+                                    <span class="text-[10px] opacity-50"
+                                        th:text="${#temporals.format(i.fechaCreacion, 'HH:mm')}">12:00</span>
+                                </div>
+                            </td>
+                            <td class="p-4 text-right">
+                                <div class="flex justify-end gap-2">
+                                    <button type="button"
+                                        class="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-white/10 transition-all text-indigo-400"
+                                        th:data-id="${i.id.value}" th:data-nombre="${i.nombre}"
+                                        th:data-apellidos="${i.apellidos}" th:data-email="${i.email}"
+                                        th:data-telefono="${i.numeroTelefono != null ? i.numeroTelefono : ''}"
+                                        th:data-idioma="${i.idiomaId != null ? i.idiomaId.value : ''}"
+                                        onclick="prepararEdicion(this)">
+                                        <span class="material-symbols-rounded">edit</span>
+                                    </button>
+                                    <form th:action="@{/web/enlacePro/admin/alumnos/borrado}" method="post"
+                                        class="inline">
+                                        <input type="hidden" name="id" th:value="${i.id.value}" />
+                                        <button type="button"
+                                            class="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-red-500/10 transition-all text-red-400"
+                                            th:onclick="abrirConfirmacion(this.form, [[${i.nombre} + ' ' + ${i.apellidos}]])">
+                                            <span class="material-symbols-rounded">delete</span>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="overlay-confirm"
+        class="modal-overlay fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
+        <div
+            class="glass-panel glass-panel-modal max-w-md w-full rounded-[32px] p-8 text-center border border-white/20 shadow-2xl">
+            <div class="w-20 h-20 bg-red-500/20 rounded-3xl flex items-center justify-center mx-auto mb-6">
+                <span class="material-symbols-rounded text-red-500 text-5xl">warning</span>
+            </div>
+            <h2 class="text-2xl font-bold mb-2 text-white" th:text="#{admin.alum.delete.confirm}">¿Estás seguro?</h2>
+            <p class="opacity-60 mb-6 text-sm text-white/80" th:text="#{admin.alum.delete.message}">Esta acción
+                eliminará al alumno permanentemente.</p>
+            <div class="bg-white/5 rounded-2xl p-4 mb-8 flex items-center justify-center gap-3 border border-white/10">
+                <span class="material-symbols-rounded text-indigo-400">person</span>
+                <span id="nombre-confirm" class="font-bold text-white">Nombre del Alumno</span>
+            </div>
+            <div class="flex gap-4">
+                <button type="button" onclick="cerrarConfirmacion()"
+                    class="flex-1 px-6 py-3 rounded-xl border border-white/10 hover:bg-white/5 transition-all font-semibold text-sm text-white">
+                    <span th:text="#{admin.alum.delete.cancel}">Cancelar</span>
+                </button>
+                <button type="button" id="btn-confirmar-borrado"
+                    class="flex-1 px-6 py-3 rounded-xl bg-red-500 hover:bg-red-600 transition-all font-semibold text-sm text-white">
+                    <span th:text="#{admin.alum.delete}">Eliminar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="edit-alumno-modal"
+        class="modal-overlay fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
+        <div class="glass-panel glass-panel-modal max-w-lg w-full rounded-[32px] p-8 border border-white/20 shadow-2xl">
+            <div class="flex items-center gap-4 mb-8">
+                <div class="icon-box p-3 bg-indigo-500/20 rounded-2xl">
+                    <span class="material-symbols-rounded text-indigo-400">edit_square</span>
+                </div>
+                <div>
+                    <h2 class="text-xl font-bold text-white" th:text="#{admin.alum.editar.form.titulo}">Editar Alumno
+                    </h2>
+                    <p class="text-xs opacity-50 text-white/70">Actualice los datos del estudiante</p>
+                </div>
+            </div>
+            <form id="editAlumnoForm" th:action="@{/web/enlacePro/admin/alumnos/editar}" method="post"
+                class="space-y-5">
+                <input type="hidden" name="id" id="edit-id">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-1">
+                        <label class="form-label text-xs opacity-60 text-white/80"
+                            th:text="#{admin.alum.nuevo.form.nombre}">Nombre</label>
+                        <input type="text" name="nombre" id="edit-nombre" required
+                            class="form-input w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white outline-none focus:border-indigo-500 transition-all">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="form-label text-xs opacity-60 text-white/80"
+                            th:text="#{admin.alum.nuevo.form.apellidos}">Apellidos</label>
+                        <input type="text" name="apellidos" id="edit-apellidos" required
+                            class="form-input w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white outline-none focus:border-indigo-500 transition-all">
+                    </div>
+                </div>
+                <div class="space-y-1">
+                    <label class="form-label text-xs opacity-60 text-white/80"
+                        th:text="#{admin.alum.nuevo.form.email}">Email</label>
+                    <input type="email" name="email" id="edit-email" required
+                        class="form-input w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white outline-none focus:border-indigo-500 transition-all">
+                </div>
+                <input type="hidden" name="numeroTelefono" id="edit-telefono">
+                <div class="space-y-1">
+                    <label class="form-label text-xs opacity-60 text-white/80"
+                        th:text="#{admin.alum.nuevo.form.idioma}">Idioma</label>
+                    <select name="idiomaSeleccionadoId" id="edit-idioma"
+                        class="form-input w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white outline-none focus:border-indigo-500 transition-all appearance-none">
+                        <option th:each="i : ${idiomas}" th:value="${i.id.value}" th:text="${i.nombre}"></option>
+                    </select>
+                </div>
+                <div class="flex gap-4 pt-4">
+                    <button type="button" onclick="cerrarEditModal()"
+                        class="flex-1 px-6 py-3 rounded-xl border border-white/10 hover:bg-white/5 transition-all font-semibold text-sm text-white">
+                        <span th:text="#{director.horario.formulario.boton.cancelar}">Cancelar</span>
+                    </button>
+                    <button type="submit"
+                        class="flex-1 px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 transition-all font-semibold text-sm text-white shadow-lg shadow-indigo-500/20">
+                        <span th:text="#{director.horario.formulario.boton.guardar}">Guardar</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toast-edit" class="toast-exito">
+        <span class="material-symbols-rounded">check_circle</span>
+        <span th:text="#{admin.alum.success.edit}">¡Alumno actualizado correctamente!</span>
+    </div>
+
+    <div id="toast-delete" class="toast-exito" style="background: rgba(239, 68, 68, 0.9);">
+        <span class="material-symbols-rounded">delete_sweep</span>
+        <span th:text="#{admin.alum.success.delete}">¡Alumno eliminado con éxito!</span>
+    </div>
+
+    <script th:src="@{/js/listaAlumno.js}"></script>
+</div>

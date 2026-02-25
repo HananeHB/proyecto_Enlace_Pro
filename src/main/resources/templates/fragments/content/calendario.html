@@ -1,0 +1,71 @@
+<div th:fragment="content" class="flex flex-col flex-1 min-h-0">
+    <div class="flex-1 flex flex-col p-4 overflow-hidden">
+        
+        <div class="flex justify-between items-center mb-4">
+            <div>
+                <h1 class="text-xl font-bold" th:text="#{director.horario.titulo}">Horario</h1>
+            </div>
+            <button onclick="toggleModal(true)" 
+                    class="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-xs font-bold shadow-lg hover:scale-105 transition-all">
+                <span class="material-symbols-rounded text-sm">add</span>
+                <span th:text="#{director.horario.boton.agregar}" style="color: white;">Nueva Tarea</span>
+            </button>
+        </div>
+
+        <section class="flex-1 min-h-0">
+            <div class="glass-panel rounded-[24px] h-full flex flex-col p-4 overflow-hidden">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex p-1 bg-black/5 dark:bg-white/10 rounded-lg scale-90 origin-left">
+                        <button id="btn-week" class="view-selector-btn active !px-4 !py-1" onclick="setView('week')"
+                            th:text="#{director.horario.boton.semana}">Semana</button>
+                        <button id="btn-month" class="view-selector-btn !px-4 !py-1" onclick="setView('month')"
+                            th:text="#{director.horario.boton.mes}">Mes</button>
+                    </div>
+                    <div class="text-lg font-bold tracking-tight opacity-80" id="current-period" th:text="#{director.horario.mes}">
+                        Febrero 2026</div>
+                </div>
+
+                <div id="calendar-content" class="relative flex-1 overflow-y-auto no-scrollbar border-t border-black/5 dark:border-white/5 pt-2">
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="fixed inset-0 z-[100] hidden items-center justify-center p-6 bg-black/60 backdrop-blur-sm" id="task-modal">
+        <div class="glass-panel w-full max-w-md rounded-[32px] p-8">
+            <h2 class="text-2xl font-bold mb-6" th:text="#{director.horario.formulario.titulo}">Añadir Tarea</h2>
+            <div class="space-y-4">
+                <div>
+                    <label class="form-label" th:text="#{director.horario.formulario.titulo.tarea}">Título</label>
+                    <input type="text" id="t-title" placeholder="Ej: Reunión Profesores" class="form-input">
+                </div>
+                <div id="day-input-container"></div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="form-label" th:text="#{director.horario.formulario.hora.inicio}">Inicio</label>
+                        <input type="number" id="t-start" value="9" min="8" max="15" step="0.5" class="form-input">
+                    </div>
+                    <div>
+                        <label class="form-label" th:text="#{director.horario.formulario.hora.fin}">Fin</label>
+                        <input type="number" id="t-end" value="10" min="8.5" max="15.5" step="0.5" class="form-input">
+                    </div>
+                </div>
+                <div>
+                    <label class="form-label" th:text="#{director.horario.formulario.color}">Color</label>
+                    <select id="t-color" class="form-input">
+                        <option value="blue" th:text="#{director.horario.formulario.color.azul}">Azul</option>
+                        <option value="green" th:text="#{director.horario.formulario.color.verde}">Verde</option>
+                        <option value="purple" th:text="#{director.horario.formulario.color.morado}">Morado</option>
+                    </select>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4 mt-10">
+                <button onclick="toggleModal(false)" class="p-4 rounded-2xl bg-black/5 font-bold text-xs">CANCELAR</button>
+                <button onclick="saveTask()" class="p-4 rounded-2xl bg-indigo-600 text-white font-bold text-xs">GUARDAR</button>
+            </div>
+        </div>
+    </div>
+    <script th:src="@{/js/calendario.js}"></script>
+    
+   
+</div>

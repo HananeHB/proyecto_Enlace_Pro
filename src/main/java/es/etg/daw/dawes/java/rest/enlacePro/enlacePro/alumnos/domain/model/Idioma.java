@@ -7,9 +7,11 @@ import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.domain.model.id.Id
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class Idioma {
     private IdiomaId id;

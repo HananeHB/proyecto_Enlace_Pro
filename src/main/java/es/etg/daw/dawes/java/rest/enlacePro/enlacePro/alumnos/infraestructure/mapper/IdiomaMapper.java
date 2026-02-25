@@ -23,7 +23,8 @@ public class IdiomaMapper {
     public static IdiomaResponse toResponse(Idioma idioma) {
         return new IdiomaResponse(idioma.getId().getValue(),
                 idioma.getNombre(),
-                idioma.getFechaCreacion());
+                idioma.getFechaCreacion(),
+                idioma.getAlumnos());
     }
 
     public static IdiomaEntity toEntity(Idioma i) {
@@ -67,5 +68,24 @@ public class IdiomaMapper {
 
     public static EditIdiomaCommand toCommand(int id, IdiomaRequest idiomaRequest) {
         return new EditIdiomaCommand(new IdiomaId(id), idiomaRequest.nombre());
+    }
+
+
+    // aaa 
+
+    public static List<Idioma> toDomainResponse(List<IdiomaResponse> lista){
+        List<Idioma> li = new ArrayList<>();
+        for(IdiomaResponse  ir: lista){
+            li.add(toDomain(ir));
+        }
+        return li;
+    }
+
+    public static Idioma toDomain(IdiomaResponse i){
+        return new Idioma(new IdiomaId(i.id()), i.nombre(), i.createdAt(), i.alumnos());
+    }
+
+    public static IdiomaRequest toRequest(Idioma i){
+        return new IdiomaRequest(i.getNombre());
     }
 }

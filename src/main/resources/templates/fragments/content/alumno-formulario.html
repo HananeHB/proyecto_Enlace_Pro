@@ -1,0 +1,139 @@
+<div th:fragment="content" class="flex-1 flex flex-col min-h-0">
+
+  <div id="successModal"
+    class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity duration-300 opacity-0 pointer-events-none"
+    th:classappend="${alumnoGuardado != null or mensaje != null} ? 'opacity-100 pointer-events-auto' : ''">
+
+    <div class="glass-panel p-8 rounded-[32px] max-w-sm w-full text-center border border-white/20 shadow-2xl">
+      <div
+        class="w-20 h-20 bg-emerald-500/20 text-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6">
+        <span class="material-symbols-rounded text-5xl">person_check</span>
+      </div>
+
+      <h2 class="text-2xl font-bold mb-2" th:text="#{admin.alum.exito.title}">
+        ¡Alumno registrado!
+      </h2>
+
+      <p class="text-sm opacity-60 mb-6" th:text="#{admin.alum.exito.subtitle}">La operación se ha completado correctamente en el sistema.</p>
+
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full border border-white/10 mb-8">
+        <span class="material-symbols-rounded text-indigo-400 text-lg">
+          <th:block th:text="${mensaje != null} ? 'edit' : 'person'"></th:block>
+        </span>
+        <span class="font-bold text-indigo-400" th:text="${alumnoGuardado ?: mensaje}">
+          Nombre del Alumno
+        </span>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <a th:href="@{/web/enlacePro/admin/alumnos}" th:text="#{admin.alum.exito.label.verAlumnos}"
+          class="py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all text-xs font-bold flex items-center justify-center gap-2">
+          <span class="material-symbols-rounded text-sm">format_list_bulleted</span>
+          Ver alumnos
+        </a>
+        <a th:href="@{/web/enlacePro/admin/alumnos/nuevo}" th:text="#{admin.alum.exito.label.nuevoAlumno}"
+          class="py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 transition-all text-xs font-bold text-white flex items-center justify-center gap-2">
+          <span class="material-symbols-rounded text-sm">add</span>
+          Nuevo
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="flex-1 overflow-y-auto no-scrollbar p-5">
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 max-w-6xl mx-auto">
+
+      <div class="lg:col-span-4 space-y-4">
+        <div class="glass-panel p-5 rounded-[26px] border-l-4 border-indigo-500 relative overflow-hidden">
+          <div class="flex gap-4">
+            <span class="material-symbols-rounded text-indigo-400 text-xl">info</span>
+            <div>
+              <h4 class="font-bold text-sm mb-0.5" th:text="#{admin.alum.nuevo.info.titulo.uno}">¿Qué nombre usar?</h4>
+              <p class="text-xs opacity-60 leading-relaxed" th:text="#{admin.alum.nuevo.info.texto.uno}">Use el nombre completo del documento de identidad para
+                evitar conflictos.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-panel p-5 rounded-[26px] border-l-4 border-amber-500 relative overflow-hidden">
+          <div class="flex gap-4">
+            <span class="material-symbols-rounded text-amber-400 text-xl">bolt</span>
+            <div>
+              <h4 class="font-bold text-sm mb-0.5" th:text="#{admin.alum.nuevo.info.titulo.dos}">Acceso Inmediato</h4>
+              <p class="text-xs opacity-60 leading-relaxed" th:text="#{admin.alum.nuevo.info.texto.dos}">Se enviarán credenciales automáticas al email institucional
+                proporcionado.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-panel p-5 rounded-[26px] border-l-4 border-emerald-500 relative overflow-hidden">
+          <div class="flex gap-4">
+            <span class="material-symbols-rounded text-emerald-400 text-xl">help</span>
+            <div>
+              <h4 class="font-bold text-sm mb-0.5" th:text="#{admin.alum.nuevo.info.titulo.tres}">Gestión de Idiomas</h4>
+              <p class="text-xs opacity-60 leading-relaxed" th:text="#{admin.alum.nuevo.info.texto.tres}">Añada nuevos idiomas desde el menú lateral si es necesario.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-8">
+        <div class="glass-panel p-6 rounded-[30px] relative overflow-hidden">
+
+          <div class="icon-box mb-4 mx-auto w-14 h-14">
+            <span class="material-symbols-rounded text-2xl">person_add</span>
+          </div>
+
+          <div class="text-center mb-6">
+            <h2 class="text-xl font-bold mb-1" th:text="#{admin.alum.nuevo.form.titulo}">Formulario de Inscripción</h2>
+            <p class="text-xs opacity-50">Complete los datos obligatorios para registrar al alumno</p>
+          </div>
+
+          <form th:action="@{/web/enlacePro/admin/alumnos/nuevo}" th:object="${alumno}" method="post" class="space-y-4">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div class="space-y-1">
+                <label class="form-label text-[10px]" th:text="#{admin.alum.nuevo.form.nombre}">Nombre</label>
+                <input type="text" th:field="*{nombre}" class="form-input py-2.5 text-sm" placeholder="Ej: Mikhail"
+                  required />
+              </div>
+
+              <div class="space-y-1">
+                <label class="form-label text-[10px]" th:text="#{admin.alum.nuevo.form.apellidos}">Apellidos</label>
+                <input type="text" th:field="*{apellidos}" class="form-input py-2.5 text-sm" placeholder="Ej: Petrov"
+                  required />
+              </div>
+            </div>
+
+            <div class="space-y-1">
+              <label class="form-label text-[10px]" th:text="#{admin.alum.nuevo.form.email}">Email Institucional</label>
+              <input type="email" th:field="*{email}" class="form-input py-2.5 text-sm"
+                placeholder="usuario@educa.madrid.org" required />
+            </div>
+
+            <div class="space-y-1">
+              <label class="form-label text-[10px]" th:text="#{admin.alum.nuevo.form.idioma}">Idioma de
+                Preferencia</label>
+              <select name="idiomaSeleccionadoId" id="idioma"
+                class="form-input py-2.5 text-sm appearance-none bg-no-repeat bg-right pr-10"
+                style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22white%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E'); background-size: 1em;"
+                required>
+                <option value="" th:text="#{admin.alum.nuevo.form.placeholder.idioma}">Seleccione un idioma</option>
+                <option th:each="i : ${idiomas}" th:value="${i.id.value}" th:text="${i.nombre}"></option>
+              </select>
+            </div>
+
+            <div class="pt-2">
+              <button type="submit"
+                class="w-full py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 transition-all font-bold text-white shadow-lg shadow-indigo-500/20 flex items-center justify-center gap-3">
+                <span class="material-symbols-rounded text-xl">how_to_reg</span>
+                <span th:text="#{admin.alum.nuevo.form.boton}" style="color: white;">Completar Matriculación</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

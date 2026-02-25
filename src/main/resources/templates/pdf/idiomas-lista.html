@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title th:text="#{admin.language.pdf.page.title}">Ficha Oficial de Idiomas - EnlacePro</title>
+    <!-- Usamos fuentes seguras o cargadas para PDF -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;800&amp;display=swap" rel="stylesheet" />
+    <style>
+        /* Configuración de página profesional */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            /* Priorizamos Outfit y caemos a Helvetica para asegurar compatibilidad */
+            font-family: 'Outfit', 'Helvetica', 'Arial', sans-serif;
+            color: #1e293b;
+            margin: 0;
+            padding: 40px;
+            background-color: #ffffff;
+        }
+
+        /* Marca de agua - Ajustada para que sea visible pero al fondo */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 800px;
+            margin-left: -400px;
+            margin-top: -50px;
+            transform: rotate(-45deg);
+            font-size: 100px;
+            font-weight: 800;
+            /* Peso fuerte para Outfit */
+            color: #f1f1f1;
+            text-align: center;
+            z-index: 0;
+            pointer-events: none;
+            text-transform: uppercase;
+        }
+
+        /* El contenido debe ir encima de la marca de agua */
+        .content-layer {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Cabecera compatible con OpenPDF */
+        .header {
+            width: 100%;
+            border-bottom: 3px solid #2563eb;
+            padding-bottom: 25px;
+            margin-bottom: 40px;
+        }
+
+        .logo-box {
+            width: 45px;
+            height: 45px;
+            background-color: #2563eb;
+            color: #ffffff;
+            text-align: center;
+            line-height: 45px;
+            font-weight: 800;
+            font-size: 18px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+
+        .brand-text-container {
+            display: inline-block;
+            vertical-align: top;
+            margin-left: 12px;
+        }
+
+        .brand-text-container h2 {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .brand-text-container p {
+            margin: 0;
+            font-size: 11px;
+            font-weight: 400;
+            color: #64748b;
+            text-transform: uppercase;
+        }
+
+        .file-meta {
+            float: right;
+            text-align: right;
+        }
+
+        .file-id {
+            background-color: #f8fafc;
+            padding: 4px 12px;
+            font-weight: 700;
+            font-size: 12px;
+            color: #475569;
+            border: 1px solid #e2e8f0;
+        }
+
+        .document-title h1 {
+            font-size: 26px;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0;
+            text-align: center;
+        }
+
+        .separator {
+            width: 90px;
+            height: 3px;
+            background-color: #2563eb;
+            margin-top: 8px;
+            margin: 10px auto 25px auto;
+            /* Centrado horizontal mediante márgenes automáticos */
+
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+
+        th {
+            background-color: #f8fafc;
+            padding: 10px;
+            text-align: left;
+            font-size: 10px;
+            font-weight: 800;
+            color: #64748b;
+            text-transform: uppercase;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        td {
+            padding: 12px 10px;
+            font-size: 13px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .status-text {
+            color: #166534;
+            font-weight: 700;
+            font-size: 11px;
+        }
+
+        .cert-box {
+            margin-top: 50px;
+            padding: 15px;
+            background-color: #f9fafb;
+            border-left: 4px solid #2563eb;
+            font-size: 11px;
+            color: #475569;
+            line-height: 1.5;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 15mm;
+            width: 90%;
+            font-size: 9px;
+            color: #94a3b8;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <!-- Marca de agua al fondo -->
+        <div class="watermark">ENLACEPRO</div>
+
+        <!-- Capa de contenido por encima -->
+        <div class="content-layer">
+            <div class="header">
+                <div style="float: left;">
+                    <div class="logo-box">EP</div>
+                    <div class="brand-text-container">
+                        <h2>EnlacePro</h2>
+                        <p th:text="#{admin.pdf.header.subtitle}">Gestión Académica Integral</p>
+                    </div>
+                </div>
+                <div class="file-meta">
+                    <div style="font-size: 12px; color: #64748b; margin-top: 4px; font-weight: 400;">08/02/2026</div>
+                    <div style="font-size: 10px; color: #94a3b8; font-weight: 600;" th:text="#{admin.pdf.header.dateLabel}">FECHA DE EMISIÓN</div>
+
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+
+            <div class="document-title">
+                <h1 th:text="#{admin.language.pdf.documentTitle}">Lista de idiomas</h1>
+                <div class="separator"></div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th th:text="#{admin.language.table.id}">ID</th>
+                        <th th:text="#{admin.language.table.name}">Idioma</th>
+                        <th th:text="#{admin.language.table.creationDate}">Fecha de creación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="i : ${idiomas}">
+                        <td style="color: #64748b; font-weight: 700;" th:text="${i.id}">1</td>
+                        <td>
+                            <strong style="color: #0f172a;" th:text="${i.nombre}">Español</strong>
+                        </td>
+                        <td>
+                            <span class="date-text"
+                                th:text="${#temporals.format(i.fechaCreacion, 'dd/MM/yyyy')}">01/01/2024</span>
+                            <span class="time-text"
+                                th:text="${#temporals.format(i.fechaCreacion, 'HH:mm')}">12:00</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="cert-box" th:text="#{admin.pdf.certification.text}">
+                Los datos presentados en este fichero corresponden a la base de
+                datos en tiempo real de la institución. Este documento sirve como comprobante de inventario lingüístico
+                oficial emitido por el sistema central de EnlacePro.
+            </div>
+        </div>
+
+        <div class="footer">
+            <div>© 2026 EnlacePro Academic Solutions</div>
+        </div>
+    </div>
+</body>
+
+</html>

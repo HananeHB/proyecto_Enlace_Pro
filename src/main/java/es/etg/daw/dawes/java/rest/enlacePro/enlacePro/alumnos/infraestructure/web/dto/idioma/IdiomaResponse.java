@@ -1,7 +1,9 @@
 package es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.infraestructure.web.dto.idioma;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.domain.model.Alumno;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 public record IdiomaResponse(
@@ -10,5 +12,6 @@ public record IdiomaResponse(
         @Schema(description = "Nombre del idioma", example = "Inglés") 
         String nombre,
         @Schema(description = "Fecha matriculación del idioma", example = "2024-05-20") 
-        LocalDateTime createdAt) {
+        LocalDateTime createdAt,
+        List<Alumno> alumnos) {
 }

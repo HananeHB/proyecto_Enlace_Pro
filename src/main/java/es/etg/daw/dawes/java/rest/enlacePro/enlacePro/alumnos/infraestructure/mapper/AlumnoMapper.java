@@ -69,4 +69,23 @@ public class AlumnoMapper {
 
         return al;
     }
+
+    public static List<Alumno> toDomainResponse(List<AlumnoResponse> lista){
+        List<Alumno> lp = new ArrayList<>();
+        for(AlumnoResponse pe: lista){
+            lp.add(toDomain(pe));
+        }
+        return lp;
+    }
+
+    public static AlumnoRequest toRequest(Alumno t) {
+        return new AlumnoRequest(t.getNombre(), t.getApellidos(), t.getEmail(), t.getNumeroTelefono(), t.getIdiomaId().getValue());
+        
+    }
+
+    public static Alumno toDomain(AlumnoResponse a){
+        return new Alumno(new AlumnoId(a.id()), a.nombre(), a.apellido(), a.email(), a.numeroTelefono(), a.createdAt(), new IdiomaId(a.idioma()));
+    }
+
+    
 }
