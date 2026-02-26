@@ -7,7 +7,8 @@
 
 El endpoint de **Padres** gestiona la información de los tutores legales de los alumnos en Enlace Pro. Su función principal es servir de puente para la comunicación y el seguimiento del progreso del estudiante. Al estar vinculado directamente con el `id_alumno`, este módulo permite que los padres reciban información personalizada y reportes traducidos a su idioma de preferencia, facilitando su involucración en el proceso educativo.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## 1. Especificaciones Técnicas del Endpoint
 
@@ -21,7 +22,8 @@ A continuación se detallan los métodos para la administración de los perfiles
 | `/padres/{id}` | **PUT** | `{"nombre":"...", "telefono":"..."}` | `200` | Datos de contacto actualizados | `400, 404` |
 | `/padres/{id}` | **DELETE** | N/A | `204` | N/A | `404: Not Found` |
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## 2. Gestión del Vínculo Familiar
 
@@ -32,12 +34,14 @@ La administración de los perfiles de familia se organiza en **tres fases clave*
 ### Fase A: Registro y Parentesco
 Al dar de alta a un tutor mediante **POST**, el sistema requiere obligatoriamente un `id_alumno`. Esta relación es la que permite que, en el futuro, cuando un profesor genere un informe de progreso, el sistema sepa automáticamente a qué correo electrónico o teléfono debe enviar la notificación, asegurando que la familia esté siempre al tanto de la evolución del menor.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ### Fase B: Canal de Comunicación Activo
 El método **GET** permite a los administradores y profesores acceder rápidamente a los datos de contacto de la familia. En contextos de Aulas de Enlace, donde la coordinación con los padres es vital para la integración del alumno, disponer de esta información de forma centralizada y actualizada es esencial para resolver cualquier incidencia de forma inmediata.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ### Fase C: Actualización de Datos de Contacto
 Mediante los métodos **PUT** y **DELETE**, el sistema se adapta a los cambios en la situación familiar. Si una familia cambia de número de teléfono o de correo electrónico, los datos pueden actualizarse al instante. Esto garantiza que el canal de comunicación nunca se rompa y que los reportes de evaluación PDF lleguen siempre a su destino correcto.

@@ -7,7 +7,8 @@
 
 Para garantizar que **EnlacePro** sea una plataforma escalable y fácil de mantener, hemos seguido el estándar del **Modelo C4**. Este enfoque nos permite visualizar la arquitectura desde una perspectiva global (Contexto) hasta una técnica (Contenedores), facilitando la comprensión de cómo fluye la información entre el usuario y la base de datos.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## Nivel 1: Diagrama de Contexto
 
@@ -15,7 +16,7 @@ En este nivel, tratamos a EnlacePro como una "caja negra". El foco principal son
 
 ### 👥 Actores y Sistemas
 
-| Elemento | Tipo | ✨ Función Principal | 🔄 Interacción |
+| Elemento | Tipo |  Función Principal |  Interacción |
 | :--- | :--- | :--- | :--- |
 | **Administrador** | Persona | Gestión de usuarios, roles e idiomas. | Escritura y Gestión total. |
 | **Usuario** | Persona | Consulta de contenidos, niveles y reportes. | Lectura y Gestión operativa. |
@@ -24,7 +25,8 @@ En este nivel, tratamos a EnlacePro como una "caja negra". El foco principal son
 
 
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## Nivel 2: Diagrama de Contenedores
 
@@ -38,7 +40,8 @@ Este nivel detalla la distribución técnica de la solución. Aquí es donde sep
 
 
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## 3. Flujo de Comunicación Técnica
 

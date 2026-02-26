@@ -4,7 +4,8 @@
   <img src="https://img.shields.io/badge/Token-JWT-black?style=for-the-badge&logo=jsonwebtokens" />
   <img src="https://img.shields.io/badge/Database-MariaDB-white?style=for-the-badge&logo=mariadb" />
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ##  1. Flujo de Autenticación (Login)
 
@@ -20,7 +21,8 @@ Enlace Pro implementa un modelo de seguridad basado en **tokens sin estado (Stat
    * ⏳ **Expiration**: Tiempo de validez del token.
 4. **Respuesta**: El servidor devuelve el token al cliente (navegador/Postman).
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ##  2. Flujo de Autorización (Peticiones)
 
@@ -30,7 +32,8 @@ El **Filtro de Seguridad** (`JwtFilter`) en la capa de infraestructura intercept
 
 
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ##  3. Roles y Permisos (RBAC)
 
@@ -42,7 +45,8 @@ Hemos implementado un sistema de **Control de Acceso Basado en Roles**:
 | **PROFESOR** | Gestión de alumnos, idiomas y exportación de reportes. |
 | **INVITADO** | Acceso de solo lectura a recursos limitados. |
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## 🛠️ Detalles Técnicos y Configuración
 

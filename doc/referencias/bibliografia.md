@@ -7,7 +7,8 @@
 
 El desarrollo de **EnlacePro** ha sido posible gracias a la consulta de documentación oficial, recursos educativos y herramientas de código abierto. A continuación se listan las fuentes principales que han servido de base para la implementación técnica y el diseño del sistema.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## 1. Documentación Técnica Oficial
 
@@ -16,7 +17,8 @@ Estos recursos han sido esenciales para la configuración del Backend y el manej
 * **Spring Framework**: [Documentación oficial de Spring Boot 4](https://spring.io/projects/spring-boot). Guía fundamental para la creación de los Servicios REST y la seguridad.
 * **Thymeleaf**: [Thymeleaf Documentation](https://www.thymeleaf.org/documentation.html). Referencia para la creación de fragmentos y el motor de plantillas.
 * **Hibernate & JPA**: [Hibernate ORM User Guide](https://hibernate.org/orm/documentation/). Base para el mapeo objeto-relacional y la gestión de la base de datos.
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## 2. Interfaz y Experiencia de Usuario (UX/UI)
 
@@ -26,7 +28,8 @@ Para lograr el diseño "Liquid Glass" y la maquetación responsive, hemos utiliz
 * **Google Fonts**: [Montserrat & Open Sans](https://fonts.google.com/). Tipografías seleccionadas para garantizar la legibilidad en entornos educativos.
 * **FontAwesome / Lucide Icons**: Bibliotecas de iconos utilizadas para la navegación y el Dashboard.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## 3. Generación de Reportes e i18n
 
@@ -35,7 +38,8 @@ Específicamente para las funcionalidades críticas de exportación y traducció
 * **Flying Saucer & iText**: [OpenPDF / Flying Saucer Project](https://github.com/flyingsaucerproject/flyingsaucer). Documentación consultada para la conversión de HTML a PDF.
 * **Baeldung**: [Spring Boot Internationalization (i18n)](https://www.baeldung.com/spring-boot-internationalization). Tutoriales técnicos para la implementación del `LocaleResolver` y el cambio de idioma.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## 4. Metodologías y Herramientas de Desarrollo
 
@@ -45,7 +49,8 @@ Recursos que facilitaron la organización y la arquitectura del proyecto:
 * **GitHub**: [GitHub Docs](https://docs.github.com/). Documentación sobre control de versiones, ramas y resolución de conflictos.
 * **Stack Overflow / Dev.to**: Consultas puntuales para la resolución de errores en el entorno de **Dev Containers** y Docker.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## 5. Contexto Educativo (Aulas de Enlace)
 

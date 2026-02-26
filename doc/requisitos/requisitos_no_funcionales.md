@@ -1,7 +1,8 @@
 # Requisitos No Funcionales (RNF)
 > **Atributos de calidad y restricciones técnicas que garantizan la viabilidad de Enlace Pro.**
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 |  ID |  Atributo de Calidad |  Descripción Técnica | 
 | :---: | :--- | :--- |
@@ -10,7 +11,8 @@
 | **NF3** | **Simplicidad (Nivel)** | Para ahorrar tiempo y complejidad, el modelo de nivel será simplificado a un Modelo Nivel (Bajo, Medio, Alto), en lugar de un examen MCER completo o algoritmos de IA complejos. | 
 | **NF4** | **Rendimiento** | El sistema debe realizar la llamada al servicio externo de traducción de manera rápida para evitar latencia al solicitar la traducción. |
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ### ⚙️ Decisiones de Arquitectura Relacionadas
 Para cumplir con estos requisitos, el sistema se apoya en:

@@ -7,7 +7,8 @@
 
 Esta documentación describe cómo hemos diseñado la interfaz de Enlace Pro para ofrecer una experiencia moderna y fluida. Para ello, hemos optado por **Tailwind CSS**, un framework que nos permite personalizar cada rincón de la aplicación. Además, se ha implementado una estética de "liquid glass" y un modo oscuro integral, asegurando que la herramienta no solo sea potente, sino también visualmente atractiva y cómoda de utilizar.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## 🖼️ 1. Estética Liquid Glass y Consistencia
 
@@ -19,7 +20,8 @@ Para que Enlace Pro sea comoda de usar para el usuario hemos predefinido algunos
 | **Tipografía** | `Inter Sans` | Fuente optimizada para que la lectura de datos sea clara y descanse la vista. |
 | **Adaptabilidad** | `Responsive` | La aplicación se ajusta automáticamente a móviles, tablets y ordenadores. |
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## ⚙️ 2. Funcionamiento del Sistema de Diseño
 
@@ -30,12 +32,14 @@ Es la base de nuestra identidad visual. Mediante el uso de transparencias y dese
 
 > 🌓 **Modo Oscuro Integral:** Para mejorar la experiencia del usuario, el sistema incluye un modo oscuro completo. Este se adapta a todas las páginas de la web, ajustando los contrastes y colores automáticamente para proteger la salud visual del usuario en entornos con poca luz.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ### 📱 Fase B: Adaptación del Entorno (Responsive)
 Una vez definido el estilo, el sistema asegura que la interfaz se comporte correctamente en cualquier dispositivo. Gracias a la tecnología de Tailwind, los menús, tablas y botones cambian su tamaño y posición de forma fluida según si el usuario accede desde un teléfono móvil o una pantalla de escritorio.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ### 🏗️ Fase C: Componentes de Acción
 Cada elemento interactivo ha sido diseñado para que el usuario sepa qué hacer en todo momento:

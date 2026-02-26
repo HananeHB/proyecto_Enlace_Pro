@@ -4,7 +4,8 @@
 
 Una de las evoluciones más críticas en **Enlace Pro** ha sido la transición de un almacenamiento volátil en memoria (H2) hacia un sistema de **persistencia real y profesional** utilizando motores de bases de datos externos.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## 1. El fin de H2: ¿Por qué migrar?
 
@@ -13,7 +14,8 @@ En las primeras fases del proyecto, se utilizó **H2 Database** por su facilidad
 * **Falta de concurrencia**: No estaba optimizada para múltiples conexiones simultáneas.
 * **Dificultad de inspección**: Era complejo consultar los datos desde herramientas externas.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## 2. Estrategia de Persistencia Políglota
 
@@ -26,7 +28,8 @@ En nuestra arquitectura de microservicios, hemos aplicado el principio de **Data
 
 
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## 3. Implementación con Docker y Volúmenes
 
@@ -35,7 +38,8 @@ Para garantizar que los datos persistan incluso si los contenedores de Docker se
 * **Mapeo de datos**: Los datos que MySQL y MariaDB generan dentro del contenedor se sincronizan en una carpeta física del servidor/PC (`/var/lib/mysql`).
 * **Independencia**: Podemos actualizar la versión del motor de la base de datos sin riesgo de perder la información de los alumnos.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## 4. Conectividad y Acceso
 

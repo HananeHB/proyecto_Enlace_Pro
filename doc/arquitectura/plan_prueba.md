@@ -8,7 +8,8 @@ En **EnlacePro**, se ha definido una estrategia de pruebas orientada a garantiza
 
 La estrategia combina distintos niveles de validación para asegurar tanto la lógica de dominio como la persistencia real de datos.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## 1. Estrategia General
 
@@ -20,7 +21,8 @@ Se aplican tres niveles principales de pruebas:
 | Integración con Mock | Simular repositorios sin base de datos | Implementaciones Mock |
 | Integración real | Validar persistencia contra MySQL real | Testcontainers + Spring Boot |
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## 2. Pruebas de Persistencia con Testcontainers 🐳
 
@@ -44,7 +46,8 @@ Durante la ejecución de los tests:
 Esto garantiza que las pruebas se ejecuten en un entorno controlado, reproducible y equivalente al de producción.
 
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## 3. Pruebas del Repositorio JPA
 
@@ -71,7 +74,8 @@ Las pruebas verifican:
 
 Gracias al uso de `@Transactional`, cada test mantiene consistencia y evita efectos colaterales entre ejecuciones.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## 4. Pruebas con Repositorios Mock
 
@@ -90,7 +94,7 @@ Estas pruebas validan:
 
 Este enfoque respeta el principio de separación entre dominio e infraestructura.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
 
 ## 5. Pruebas de Integración del Controller
 
@@ -102,7 +106,8 @@ Se validan los flujos principales de:
 
 En estas pruebas se utilizan implementaciones mock del repositorio, lo que permite validar la capa web sin necesidad de levantar infraestructura externa.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## 6.  Dependencias Utilizadas
 
@@ -130,7 +135,8 @@ Las siguientes dependencias permiten la integración entre Spring Boot y Testcon
 </dependency>
 ```
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## 7.  Evidencias de Ejecución
 

@@ -9,7 +9,8 @@ Esta arquitectura se divide en tres niveles: **Puerta de Entrada (Gateway), Lóg
 
 
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## 1. El punto de entrada: API Gateway
 En esta nueva etapa, el usuario no contacta directamente con los servicios finales. Todo pasa por el **API Gateway** (puerto 8080):
@@ -18,7 +19,8 @@ En esta nueva etapa, el usuario no contacta directamente con los servicios final
 * **Enrutamiento Inteligente:** El Gateway recibe la solicitud y, según la URL (`/auth/**` o `/alumnos/**`), la redirige al microservicio correspondiente.
 * **Seguridad Centralizada:** Actúa como el primer filtro de seguridad para las peticiones externas.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## 2. El motor del sistema: Docker y JVM
 
@@ -29,13 +31,14 @@ A diferencia de la versión anterior, cada componente vive dentro de un **Conten
 3. **Spring Boot & Spring Security:** * **Auth Service:** Procesa credenciales y genera tokens **JWT**.
     * **Alumnos Service:** Gestiona la lógica académica y la generación de reportes PDF.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## 3. Persistencia Políglota (Bases de Datos Externas)
 
 Hemos sustituido la base de datos temporal H2 por un sistema de **persistencia real y externa**. Los datos ya no se borran al reiniciar el servidor gracias al uso de **Volúmenes de Docker**.
 
-| 🗄️ Componente | 🛠️ Tecnología | 🎯 Rol |
+|  Componente |  Tecnología |  Rol |
 | :--- | :--- | :--- |
 | **BD Seguridad** | **MariaDB** | Almacena usuarios, roles y permisos de acceso. |
 | **BD Negocio** | **MySQL 8.0** | Almacena la información de alumnos, idiomas y registros académicos. |
@@ -43,7 +46,8 @@ Hemos sustituido la base de datos temporal H2 por un sistema de **persistencia r
 ### ¿Cómo se conectan?
 La comunicación se realiza mediante una **Red Virtual de Docker**. Los microservicios utilizan conectores JDBC para hablar con sus respectivas bases de datos, utilizando variables de entorno para una configuración segura y flexible (Perfiles `dev` y `prod`).
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## 4. Flujo de una solicitud (Ejemplo: Ver Alumnos)
 
@@ -55,8 +59,3 @@ La comunicación se realiza mediante una **Red Virtual de Docker**. Los microser
 4. **Servicio:** El microservicio de Alumnos consulta a la base de datos **MySQL**.
 5. **Respuesta:** Los datos viajan de vuelta al usuario a través del Gateway.
 
----
-
-
-
-👉 **Siguiente paso:** [**Seguridad JWT y Roles 🔐**](seguridad.md)

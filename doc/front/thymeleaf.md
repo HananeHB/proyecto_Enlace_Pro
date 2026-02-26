@@ -7,7 +7,8 @@
 
 Esta documentación explica cómo gestionamos la generación de vistas de forma eficiente en Enlace Pro. Utilizamos **Thymeleaf** como motor de plantillas del lado del servidor, aplicando un enfoque modular basado en fragmentos. Esto nos permite separar la estructura general de la aplicación del contenido específico de cada página, facilitando el mantenimiento y evitando la duplicidad de código.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## 🧱 1. Modularización y Componentes Reutilizables
 
@@ -21,7 +22,8 @@ En lugar de crear páginas enteras desde cero, hemos dividido la interfaz en pie
 | **`contenido_central.html`** | `content` | Variable la cual cambia dependiendo de la página a la que accedamos desde el menú.|
 
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## ⚙️ 2. Funcionamiento de la Arquitectura Modular
 
@@ -32,18 +34,17 @@ El archivo `layout.html` actúa como la base de todo el proyecto. En este archiv
 
 > 💡 **Mantenimiento Único:** Si necesitamos añadir un nuevo estilo o una librería (como Chart.js), solo tenemos que hacerlo en el layout y automáticamente estará disponible en toda la aplicación, ahorrando tiempo y evitando errores.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ### Fase B: Inyección Dinámica de Contenido
 Cada página específica (como la lista de alumnos o el calendario) solo contiene el código que le corresponde. Al cargar la página, el sistema utiliza el atributo `th:replace="${content} :: content"` para inyectar la lógica propia de esa vista dentro del diseño general, manteniendo siempre el Sidebar y el Header intactos.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ### Fase C: Integración con Spring Boot
 Thymeleaf nos permite conectar directamente el servidor con la interfaz. A través de etiquetas como `th:text` o `th:each`, mostramos de forma dinámica los datos que vienen de la base de datos (nombres de alumnos, mensajes traducidos, etc.) de una manera sencilla y totalmente integrada con la lógica de negocio de Spring.
 
 ---
 
-  <br>
-  <img src="https://img.shields.io/badge/Server_Side-Java_Spring-green?style=flat-square&logo=springboot" />
-  <img src="https://img.shields.io/badge/Templates-HTML5_Fragments-orange?style=flat-square" />

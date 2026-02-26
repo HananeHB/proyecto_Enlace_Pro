@@ -12,7 +12,8 @@ El proyecto **Enlace Pro** nace para resolver los desafíos críticos que enfren
 > ### 💡 ¿Qué es un Aula de Enlace?
 > Es un recurso educativo fundamental en el sistema educativo , específicamente en centros de Secundaria, destinado a la atención del alumnado recién llegado que presenta un desconocimiento o bajo dominio del idioma del país. Su objetivo es facilitar la inmersión lingüística y la adaptación sociocultural para que estos estudiantes puedan incorporarse al grupo ordinario lo antes posible.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ##  Los 3 Grandes Obstáculos
 
@@ -32,7 +33,8 @@ El principal obstáculo es que los materiales de clase no están adaptados de fo
 * **Barrera Cultural y de Idioma:** Las familias tienen dificultades para entender notas, informes y comunicaciones debido a que los sistemas de evaluación son radicalmente distintos a los de sus países de origen.
 * **Aislamiento:** Esta falta de comprensión impide que los padres sigan el progreso de sus hijos o participen activamente en la vida del instituto.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ##  Nuestra Misión
 **Enlace Pro** no solo busca traducir palabras; busca **construir puentes**. Queremos devolverle al profesor su tiempo para enseñar y al alumno su derecho a comprender, eliminando la burocracia del proceso de adaptación.

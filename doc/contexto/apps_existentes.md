@@ -14,7 +14,8 @@ Esta falta de conexión genera un escenario crítico:
 
 > **Impacto:** Para el profesorado, supone una carga burocrática excesiva; para el alumnado, una barrera lingüística constante al recibir materiales no adaptados.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ##  Clasificación de Herramientas Actuales
 
@@ -31,7 +32,8 @@ Plataformas como Moodle o Google Classroom ayudan a que el profesorado organice 
 ### C. Herramientas para creaer actividades
 Aplicaciones como Genially o Kahoot facilitan actividades más visuales, pero requieren que el profesor cree una versión distinta del material para cada nivel. Esto sifnifica que el alumno no recibe una adaptación inmediata, y el profesorado invierte muchas horas en repetir los mismos.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ##  Comparativa de Capacidades
 
@@ -42,7 +44,8 @@ Aplicaciones como Genially o Kahoot facilitan actividades más visuales, pero re
 | **Diseño (Genially/Kahoot)** | ❌ | ❌ | ✅ |
 | **🚀 ENLACE PRO** | **✅** | **✅** | **✅** |
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## 💡 Conclusión
  Aúnque todas estas aplicaciones aporten algo ninguna cubre todo lo que el profesorado y el alumnado necesitan en el día a día. Esta fragmentación dificulta el aprendizaje y la organización del aula. Por ello, aparece **Enlace Pro**, como una propuesta que intenta reunir estos procesos en un solo lugar.

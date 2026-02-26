@@ -7,7 +7,8 @@
 
 Este endpoint centraliza la gestión de los recursos textuales de Enlace Pro. Su función es almacenar y proporcionar las frases, enunciados y textos adaptados que se utilizan en las actividades didácticas. Es el motor que alimenta la comprensión lectora de los estudiantes, permitiendo una progresión lógica desde frases sencillas hasta estructuras más complejas.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## 1. Especificaciones Técnicas del Endpoint
 
@@ -21,7 +22,8 @@ La tabla a continuación detalla los métodos disponibles para interactuar con l
 | `/textos/{id}` | **PUT** | `{"texto":"..."}` | `200` | Contenido actualizado | `400, 404` |
 | `/textos/{id}` | **DELETE** | N/A | `204` | N/A | `404: Not Found` |
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## 2. Flujo de Gestión de Contenido Lectivo
 
@@ -30,12 +32,14 @@ La administración de los textos en Enlace Pro sigue **tres pasos operativos** p
 ### Fase A: Creación de Material Adaptado
 A través de las peticiones **POST**, los docentes pueden introducir nuevos textos adaptados al nivel de competencia de sus alumnos. El sistema valida la entrada y asigna un identificador único, permitiendo que las frases queden registradas para su uso inmediato en la plataforma.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ### Fase B: Recuperación Dinámica
 El método **GET** permite al frontend extraer los textos necesarios para cada ejercicio. Gracias a la integración con el diseño "Liquid Glass", estas frases se presentan de forma clara y espaciada, facilitando que el alumno pueda centrarse en la lectura sin distracciones visuales.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ### Fase C: Optimización y Edición
 Mediante los métodos **PUT** y **DELETE**, el profesorado puede refinar el contenido. Si un texto necesita ser simplificado o corregido para mejorar la comprensión, se actualiza mediante una petición PUT, asegurando que todos los alumnos vean la versión mejorada al instante.

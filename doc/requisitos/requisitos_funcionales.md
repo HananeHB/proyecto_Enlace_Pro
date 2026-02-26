@@ -2,7 +2,8 @@
 
 > **Ecosistema de Usuarios:** 🎓 **Alumno** | 👨‍🏫 **Profesor** | 🏠 **Padre/Tutor** | 🔑 **Director**
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 |  ID |  Requisito Funcional |  Actores |  Descripción |
 | :---: | :--- | :--- | :--- |
@@ -14,14 +15,16 @@
 | **F6** | **Carga Multinivel** | 👨‍🏫 | Interfaz para subir el contenido original junto a sus tres variantes adaptadas. |
 | **F7** | **Panel de Gestión (CRUD)** | 🔑 | Control total para añadir, eliminar o modificar alumnos, padres, profesores e idiomas. |
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ### 🛡️ Notas Técnicas
 * **Seguridad:** Los requisitos **F1** y **F7** se gestionan mediante roles de autoridad en Spring Security.
 * **Frecuencia:** Según **F4**, el sistema debe permitir la actualización de niveles cada 60 días para reflejar la evolución real.
 * **Accesibilidad:** **F5** prioriza el uso de material visual para reforzar la inmersión lingüística.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 👉 **Siguiente paso:** Consulta nuestra sección Requisitos no Funcionales
 

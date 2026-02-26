@@ -7,7 +7,8 @@
 
 Enlace Pro utiliza una arquitectura de servicios orientada a recursos, donde cada entidad se gestiona a través de endpoints específicos. Para garantizar la seguridad y la integridad de los datos académicos, hemos implementado un sistema de **Control de Acceso Basado en Roles (RBAC)**, donde cada perfil tiene acceso solo a las funciones CRUD necesarias para su labor.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## 1. Matriz de Acceso y Funcionalidades
 
@@ -21,7 +22,8 @@ No todos los usuarios interactúan de la misma forma con la base de datos. A con
 | **[/padres](endpoints/padres.md)** | Profesores / Directores | `Full CRUD` | Gestión de comunicación familiar. |
 | **[/directores](endpoints/directores.md)** | Administrador Sistema | `Full CRUD` | Control de alto nivel del centro. |
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## 2. Implementación de la Lógica de Negocio
 
@@ -32,17 +34,20 @@ La comunicación entre el cliente y el servidor se rige por **estos principios t
 ### Fase A: Desacoplamiento (RESTful)
 Cada endpoint funciona de manera independiente. Esto significa que podemos actualizar la lógica de los profesores sin afectar al funcionamiento de los idiomas o los contenidos. El servidor responde exclusivamente en formato **JSON**, lo que permite que la interfaz sea ligera y rápida.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ### Fase B: Seguridad en el Acceso (RBAC)
 A través de **Spring Security**, cada petición HTTP es validada. Si un usuario con rol "Padre" intenta realizar una petición `POST` al endpoint de `/profesores`, el sistema denegará automáticamente el acceso con un error `403 Forbidden`, protegiendo la jerarquía y privacidad del centro.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ### Fase C: Consistencia de Datos
 Aunque cada endpoint tiene su propia implementación, todos comparten un sistema común de manejo de excepciones. Si un recurso no se encuentra, la API devuelve una respuesta estandarizada (ej. `AlumnoNotFoundException`), facilitando que el frontend informe al usuario de manera clara y coherente.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 En nuestra aplicación web tendremos los siguientes roles:
 

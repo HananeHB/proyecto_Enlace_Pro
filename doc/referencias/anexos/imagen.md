@@ -7,7 +7,8 @@
 
 Este endpoint gestiona los recursos visuales de Enlace Pro. Dado que nuestra aplicación está enfocada a Aulas de Enlace, el soporte visual es fundamental para que los alumnos asocien conceptos de forma rápida. A través de esta API, controlamos la subida, actualización y listado de las imágenes que acompañan al vocabulario y a los materiales didácticos.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## 1. Especificaciones Técnicas del Endpoint
 
@@ -21,7 +22,8 @@ La siguiente tabla detalla las operaciones disponibles para la gestión de archi
 | `/imagenes/{id}` | **PUT** | `{"imagen":"naranja.jpg"}` | `200` | Nombre de imagen actualizado | `400, 404` |
 | `/imagenes/{id}` | **DELETE** | N/A | `204` | N/A | `404: Not Found` |
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ## 2. Gestión de Recursos Visuales
 
@@ -30,12 +32,14 @@ El manejo de imágenes en Enlace Pro se divide en **tres fases críticas** para 
 ### Fase A: Registro de Rutas
 Cuando un profesor sube o referencia una nueva imagen, el sistema procesa la petición **POST**. No solo se guarda el nombre del archivo, sino que se valida que el formato sea compatible (como `.png`, `.jpg` o `.webp`) para asegurar que se visualice correctamente en los paneles de cristal de la web.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ### Fase B: Vinculación con el Aprendizaje
 Las imágenes no están aisladas; cada `id_imagen` se relaciona posteriormente con términos de vocabulario. A través de las peticiones **GET**, el frontend recupera la ruta del archivo y la renderiza dinámicamente, permitiendo que el alumno vea la imagen asociada a la palabra que está aprendiendo en su idioma.
 
----
+<p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
+
 
 ### Fase C: Mantenimiento y Limpieza
 Mediante los métodos **PUT** y **DELETE**, el administrador puede corregir nombres de archivos o eliminar recursos que ya no se utilicen. Esto mantiene el servidor ligero y organizado, evitando que queden archivos huérfanos que no estén asociados a ningún contenido educativo real.
