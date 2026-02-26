@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>es.etg.daw.dawes.java.rest.enlacePro</groupId>
 	<artifactId>enlace_pro</artifactId>
-	<version>1.0.0</version>
+	<version>2.0.0</version>
 	<name>enlace_pro</name>
 	<description>Aplicacion que festiona un instituto focalizandose en la clase de enlace</description>
 	<url/>
