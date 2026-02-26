@@ -23,7 +23,7 @@ public class IdiomaJpaRepositoryImpl implements IdiomaRepository {
 
     @Override
     public List<Idioma> getAll() {
-        return IdiomaMapper.toDomain(repository.findAll());
+        return IdiomaMapper.toDomain(repository.findAllWithAlumnos());
     }
 
     @Override

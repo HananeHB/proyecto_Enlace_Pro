@@ -2,6 +2,8 @@ package es.etg.daw.dawes.java.rest.enlacePro.enlacePro.alumnos.infraestructure.d
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -40,12 +42,13 @@ public class AlumnoEntity {
     @Column(name = "email", nullable = false, unique = true, length = 100)
     private String email;
 
-    @Column(name = "direccion", nullable = false, unique = true, length = 200)
+    @Column(name = "direccion", nullable = false, length = 200)
     private String direccion;
 
     @Column(name = "fecha_creacion", nullable = false, updatable = false)
     private LocalDateTime fechaCreacion;
 
+    @JsonManagedReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idioma_id", nullable = false)
     private IdiomaEntity idioma;

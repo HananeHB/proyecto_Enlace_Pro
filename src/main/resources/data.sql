@@ -18,5 +18,5 @@ INSERT INTO usuarios (id, firstname, lastname, email, password, role ) VALUES
 (1,'user', 'user', 'user@a.com', '$2a$12$PB6GwcJCu44g/T895VObduyyMGsX.Rl/QN0kU/IY0l9HOPokGJBpe', 'USER'),
 (2,'admin', 'admin', 'admin@a.com', '$2a$12$crH/Tuxn/3in7inhgLzoiOTfaXm2sLQy5alm0pwlBXu2z./MzwTMW', 'ADMIN');
 
-ALTER TABLE alumnos ALTER COLUMN id RESTART WITH 10;
-ALTER TABLE idiomas ALTER COLUMN id RESTART WITH 4;
+ALTER TABLE alumnos AUTO_INCREMENT = 10;
+ALTER TABLE idiomas AUTO_INCREMENT = 4;

@@ -33,6 +33,12 @@ services:
       - "8080:8080"
     restart: always
 
+  #---- Adminer ----
+  adminer: # Interfaz gráfica para ver la base de datos
+    image: adminer
+    restart: always
+    ports:
+      - 8090:8080" 
 volumes:
   mysql_data:
   

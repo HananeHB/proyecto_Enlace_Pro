@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -32,7 +34,7 @@ public class IdiomaEntity {
     @Column(name = "fecha_creacion", nullable = false, updatable = false)
     private LocalDateTime fechaCreacion;
     
-    @Builder.Default
+    @JsonManagedReference
     @OneToMany(mappedBy = "idioma", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<AlumnoEntity> alumnos = new ArrayList<AlumnoEntity>();
 
