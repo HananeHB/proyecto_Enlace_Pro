@@ -17,7 +17,7 @@ Cada microservicio es capaz de auto-documentarse. Puedes acceder a las interface
 | 🌐 Servicio | 🔗 Enlace Local |
 | :--- | :--- |
 | **Auth Service** | `http://localhost:8081/swagger-ui.html` |
-| **Alumnos Service** | `http://localhost:8082/swagger-ui.html` |
+| **Alumnos Service** | `http://localhost:8083/swagger-ui.html` |
 
 <p align="start" style="margin-top: 30px; margin-bottom: 30px;"> ◆ ◆ ◆ </p>
 

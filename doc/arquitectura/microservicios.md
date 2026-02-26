@@ -107,7 +107,7 @@ Para que este ecosistema funcione, hemos implementado una **Red Virtual de Docke
       <td style="padding: 20px;">
         <div align="center">
           <img src="https://img.shields.io/badge/ALUMNOS--SERVICE-UP-31C653?style=for-the-badge&logo=spring" /><br>
-          <code>Port: 8082</code>
+          <code>Port: 8083</code>
         </div>
       </td>
       <td style="padding: 20px;">
