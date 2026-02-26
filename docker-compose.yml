@@ -19,7 +19,7 @@ services:
     restart: always
 
   mi-api-rest:
-    image: nuhaila/enlace_pro:v4
+    build: .
     container_name: enlace_pro-container
     depends_on:
       mysql:
