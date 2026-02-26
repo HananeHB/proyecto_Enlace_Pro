@@ -36,13 +36,13 @@ public class AlumnoEntity {
     @Column(name = "apellidos", nullable = false, length = 50)
     private String apellido;
 
-    @Column(name = "numero_telefono", nullable = false, length = 9)
+    @Column(name = "numero_telefono", nullable = true, length = 9)
     private String numeroTelefono;
 
     @Column(name = "email", nullable = false, unique = true, length = 100)
     private String email;
 
-    @Column(name = "direccion", nullable = false, length = 200)
+    @Column(name = "direccion", nullable = true, length = 200)
     private String direccion;
 
     @Column(name = "fecha_creacion", nullable = false, updatable = false)
