@@ -27,14 +27,40 @@ Aplicando:
 ---
 
 ## 👥 Equipo del Proyecto
-| | Nombre |
-| :--- | :--- |
-| 👩‍💻 | **Hanane** |
-| 👩‍💻 | **Jennifer** |
-| 👩‍💻 | **Nuhaila** |
 
-📅 **Última actualización:** Febrero 2026  
-📄 [Consultar historial detallado de versiones](/doc/versiones.md)
+<table style="border: none;">
+  <tr>
+    <td align="center" width="200">
+      <a href="https://github.com/HananeHB">
+            <img src="https://avatars.githubusercontent.com/u/158471499?v=4" width="100" style="border-radius: 50%;" />
+        </a><br>
+      <b>Hanane </b><br>
+      <sub>HananeHB</sub>
+    </td>
+    <td align="center" width="200">
+        <a href="https://github.com/JennyCS48">
+            <img src="https://avatars.githubusercontent.com/u/195781876?v=4" width="100" style="border-radius: 50%;" />
+        </a>
+        <br>
+        <b>Jennifer</b><br>
+        <sub>JennyCS48</sub>
+    </td>
+    <td align="center" width="200">
+     <a href="https://github.com/nuasai04">
+            <img src="https://avatars.githubusercontent.com/u/194843002?v=4" width="100" style="border-radius: 50%;" />
+        </a><br>
+      <b>Nuhaila</b><br>
+      <sub>nuasai04</sub>
+    </td>
+    
+  </tr>
+</table>
+
+**Última actualización:** Febrero 2026 
+
+<a href="/doc/versiones.md">
+    <img src="https://img.shields.io/badge/Historial_Versiones-24292e?style=for-the-badge&logo=github&logoColor=white" />
+</a>
 
 ---
 
@@ -81,7 +107,9 @@ Para una visión técnica profunda, consulta los diagramas y el diseño de datos
 * 🖇️ [Bibliografía](/doc/referencias/bibliografia.md)
 * 🔗 [Anexos](/doc/referencias/anexos/anexos.md)
 
+
 ---
+
 
 ## 🛠️ Tecnologías Utilizadas
 | Categoría | Herramientas |
@@ -100,4 +128,34 @@ Para una visión técnica profunda, consulta los diagramas y el diseño de datos
 | **Internacionalización** | ![i18n](https://img.shields.io/badge/i18n-🌐-blue?style=for-the-badge) |
 
 ---
-_Desarrollado con ❤️ para la educación secundaria._
+
+## Resumen visual
+
+
+```mermaid
+
+mindmap
+  root((EnlacePro))
+    Arquitectura
+      Microservicios
+      Docker
+      API Gateway
+    Negocio
+      Gestión Alumnos
+      Idiomas
+      Reportes PDF
+    Seguridad
+      Spring Security + JWT
+```
+
+
+
+
+<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png" width="100%">
+
+
+<p align="center" style="margin-top:40px;">
+  <img src="img/doc/logo.png" alt="Visitas" style="width: 45px;"/><br>
+  <sub><b>Enlace Pro 2026</b> •Desarrollado con ❤️ para la educación secundaria.</sub><br>
+  
+</p>
