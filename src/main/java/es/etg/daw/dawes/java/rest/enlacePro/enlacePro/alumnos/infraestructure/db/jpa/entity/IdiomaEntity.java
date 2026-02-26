@@ -28,7 +28,7 @@ public class IdiomaEntity {
     @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "nombre", nullable = false, length = 50)
+    @Column(name = "nombre", unique = true,nullable = false, length = 50)
     private String nombre;
 
     @Column(name = "fecha_creacion", nullable = false, updatable = false)
