@@ -1,0 +1,5 @@
+package es.etg.daw.dawes.java.rest.enlacePro.enlacePro.profesorado.infraestructure.web.enums;
+
+public class ThymView {
+    
+}
